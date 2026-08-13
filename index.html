@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tips GH - Free & VIP Bet Tips</title>
+<style>
+  body {font-family: Arial; background:#0f172a; color:white; margin:0; padding:20px;}
+  h1 {text-align:center; color:#22c55e;}
+  .card {background:#1e293b; padding:15px; border-radius:12px; margin:15px 0;}
+  .badge {padding:4px 10px; border-radius:20px; font-size:12px; font-weight:bold;}
+  .free {background:#22c55e;}
+  .vip {background:#facc15; color:#000;}
+  .btn {display:inline-block; padding:10px 15px; background:#22c55e; color:white; 
+        text-decoration:none; border-radius:8px; margin-top:10px;}
+  .vip-blur {filter: blur(4px); pointer-events:none;}
+</style>
+</head>
+<body>
+
+<h1>⚽ Tips GH</h1>
+<p style="text-align:center;">Daily Free & VIP Betting Tips</p>
+
+<div id="tips"></div>
+
+<script>
+const articles = [
+  {
+    id: 1,
+    title: "Man City vs Arsenal",
+    category: "FREE",
+    content: "Both teams are scoring. TIP: BTTS Yes @ 1.80",
+    isVIP: false
+  },
+  {
+    id: 2, 
+    title: "Chelsea vs Liverpool Correct Score",
+    category: "VIP",
+    content: "Our AI model predicts 2-1. VIP members only.",
+    isVIP: true
+  },
+  {
+    id: 3,
+    title: "Barcelona vs Real Madrid",
+    category: "FREE", 
+    content: "Over 2.5 goals looks very strong. TIP: Over 2.5 @ 1.65",
+    isVIP: false
+  }
+];
+
+const tipsDiv = document.getElementById("tips");
+articles.forEach(a => {
+  tipsDiv.innerHTML += `
+    <div class="card">
+      <span class="badge ${a.isVIP ? 'vip' : 'free'}">${a.category}</span>
+      <h3>${a.title}</h3>
+      <p class="${a.isVIP ? 'vip-blur' : ''}">${a.content}</p>
+      ${a.isVIP ? '<a href="https://wa.me/233XXXXXXXXX" class="btn">🔒 Unlock VIP on WhatsApp</a>' : ''}
+    </div>
+  `;
+});
+</script>
+
+</body>
+</html>
