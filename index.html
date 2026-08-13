@@ -45,7 +45,14 @@ const articles = [
     category: "FREE", 
     content: "Over 2.5 goals looks very strong. TIP: Over 2.5 @ 1.65",
     isVIP: false
-  }
+  },
+{
+  id: 4,
+  title: "Real Madrid vs PSG",
+  category: "VIP",
+  content: "VIP TIP: Over 2.5 goals. Join WhatsApp to see full tip",
+  isVIP: true
+}
 ];
 
 const tipsDiv = document.getElementById("tips");
@@ -55,7 +62,7 @@ articles.forEach(a => {
       <span class="badge ${a.isVIP ? 'vip' : 'free'}">${a.category}</span>
       <h3>${a.title}</h3>
       <p class="${a.isVIP ? 'vip-blur' : ''}">${a.content}</p>
-      ${a.isVIP ? '<a href="https://wa.me/233XXXXXXXXX" class="btn">🔒 Unlock VIP on WhatsApp</a>' : ''}
+      ${a.isVIP ? '<a href="https://wa.me/233530946387" class="btn">🔒 Unlock VIP on WhatsApp</a>' : ''}
     </div>
   `;
 });
