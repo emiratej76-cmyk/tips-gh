@@ -27,19 +27,22 @@
 
 <div id="tips"></div>
 
-<script>   
-const articles = [
-  {id: 1, title: "Man City vs Arsenal", category: "FREE", content: "BTTS Yes @ 1.80", isVIP: false},
-  {id: 2, title: "Chelsea vs Liverpool", category: "FREE", content: "Over 2.5 Goals @ 1.75", isVIP: false},
-  {id: 3, title: "Barcelona vs Real Madrid", category: "FREE", content: "Barcelona Draw No Bet @ 1.50", isVIP: false},
-  {id: 4, title: "Bayern vs Dortmund", category: "FREE", content: "Over 3 Goals @ 1.85", isVIP: false},
-  {id: 5, title: "PSG vs Marseille", category: "FREE", content: "PSG Win @ 1.60", isVIP: false},
-  {id: 6, title: "Man United vs Tottenham", category: "VIP", content: "VIP CORRECT SCORE: 2-1", isVIP: true},
-  {id: 7, title: "AC Milan vs Inter", category: "VIP", content: "VIP HT/FT: X/1", isVIP: true},
-  {id: 8, title: "Atletico vs Sevilla", category: "VIP", content: "VIP Under 2.5 Goals", isVIP: true},
-  {id: 9, title: "Juventus vs Napoli", category: "VIP", content: "VIP Sure 2 Odds Combo", isVIP: true},
-  {id: 10, title: "Ajax vs PSV", category: "VIP", content: "VIP 5+ Odds Combo", isVIP: true}
-];
+<script>
+ const articles = [
+  // 5 FREE TIPS
+  {id: 1, title: "Manchester United vs Newcastle", category: "FREE", content: "Over 2.5 Goals @ 1.72", isVIP: false},
+  {id: 2, title: "Real Madrid vs Valencia", category: "FREE", content: "Real Madrid Win @ 1.45", isVIP: false},
+  {id: 3, title: "Juventus vs Bologna", category: "FREE", content: "BTTS Yes @ 1.68", isVIP: false},
+  {id: 4, title: "Dortmund vs Stuttgart", category: "FREE", content: "Over 1.5 Goals @ 1.30", isVIP: false},
+  {id: 5, title: "Galatasaray vs Fenerbahce", category: "FREE", content: "Draw No Bet: Galatasaray @ 1.55", isVIP: false},
+  
+  // 5 VIP TIPS - BLURRED
+  {id: 6, title: "PSG vs Monaco", category: "VIP", content: "VIP CORRECT SCORE: 3-2 @ 16.00", isVIP: true},
+  {id: 7, title: "Inter vs Napoli", category: "VIP", content: "VIP HT/FT: 1/1 @ 2.25", isVIP: true},
+  {id: 8, title: "Liverpool vs Brighton", category: "VIP", content: "VIP Under 3.5 + BTTS @ 3.10", isVIP: true},
+  {id: 9, title: "Barcelona vs Athletic Bilbao", category: "VIP", content: "VIP SURE 2 ODDS: Home Win @ 2.50", isVIP: true},
+  {id: 10, title: "Ajax vs AZ Alkmaar", category: "VIP", content: "VIP 5+ ODDS COMBO. Join to unlock", isVIP: true}
+]; 
 
 const tipsDiv = document.getElementById("tips");
 articles.forEach(a => {
