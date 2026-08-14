@@ -1,51 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Emiratej Tips GH - Daily Predictions</title>
+  <title>TIP GH - Daily Predictions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { font-family: Arial; text-align: center; background: #0a0a0a; color: white; padding: 20px; }
-    .card { background: #1a1a1a; padding: 20px; border-radius: 10px; margin: 20px auto; max-width: 500px; }
-    .vip { border: 2px solid gold; }
-    button { background: gold; color: black; padding: 15px 30px; border: none; border-radius: 5px; font-size: 18px; cursor: pointer; }
-    a { color: gold; }
+    body { font-family: Arial; background: #000; color: white; margin: 0; padding: 20px; text-align: center; }
+    h1 { color: #00FF7F; font-size: 28px; margin: 10px 0; }
+    .buttons { display: flex; justify-content: center; gap: 10px; margin: 20px 0; flex-wrap: wrap; }
+    .btn { padding: 12px 18px; border-radius: 8px; border: 2px solid #00FF7F; background: #111; color: white; cursor: pointer; font-weight: bold; }
+    .btn.active { background: #00FF7F; color: black; }
+    .tip-card { background: #1a1a1a; border-left: 4px solid #00FF7F; margin: 10px auto; padding: 15px; border-radius: 8px; max-width: 500px; text-align: left; }
+    .vip-box { background: #111; border: 2px solid #00FF7F; border-radius: 10px; padding: 20px; margin: 20px auto; max-width: 500px; }
+    .vip-btn { background: #00FF7F; color: black; padding: 15px; border: none; border-radius: 8px; width: 100%; font-size: 18px; font-weight: bold; cursor: pointer; }
+    a { color: #00FF7F; text-decoration: none; }
   </style>
 </head>
 <body>
-  <h1>🔥 Emiratej Tips GH 🔥</h1>
-  <p>Daily Free and VIP Betting Tips</p>
-  
-  <div class="card">
-    <h2>FREE TIP TODAY</h2>
-    <p>Man City vs Arsenal: Over 2.5 Goals</p>
-    <p>Odd: 1.75 | Time: 19:00</p>
+
+  <h1>⚽ TIP GH</h1>
+  <p>5 Free Tips Daily + 5 VIP Sure Odds</p>
+
+  <div class="buttons">
+    <div class="btn active">Today's Tips</div>
+    <a href="history.html"><div class="btn">Winning History</div></a>
+    <a href="vip-payment.html"><div class="btn">VIP Payment</div></a>
   </div>
 
-  <div class="card vip">
-    <h2>👑 VIP PREDICTIONS</h2>
-    <p>5 Sure Games Daily</p>
+  <!-- FREE TIPS -->
+  <div class="tip-card">
+    <b>FREE:</b> Manchester United vs Newcastle<br>
+    Over 2.5 Goals @ 1.72
+  </div>
+
+  <div class="tip-card">
+    <b>FREE:</b> Real Madrid vs Valencia<br>
+    Real Madrid Win @ 1.45
+  </div>
+
+  <div class="tip-card">
+    <b>FREE:</b> Juventus vs Bologna<br>
+    BTTS Yes @ 1.68
+  </div>
+
+  <div class="tip-card">
+    <b>FREE:</b> Dortmund vs Stuttgart<br>
+    Over 1.5 Goals @ 1.30
+  </div>
+
+  <div class="tip-card">
+    <b>FREE:</b> Galatasaray vs Fenerbahce<br>
+    Draw No Bet: Galatasaray @ 1.55
+  </div>
+
+  <!-- VIP SECTION -->
+  <div class="vip-box">
+    <h2>👑 VIP SURE ODDS</h2>
+    <p>5 VIP Games Daily</p>
     <p>Win Rate: 80%+</p>
     <p><b>50 GHS / Month</b></p>
-    
-    <!-- PAYPAL BUTTON -->
-    <div id="paypal-button-container"></div>
-    
-    <p>Or Pay MoMo: <b>+233530946387</b></p>
-    <p>After payment, WhatsApp me receipt: <a href="https://wa.me/233530946387">Click to WhatsApp</a></p>
-    <p>Then get VIP password to access: <a href="vip.html">VIP PAGE</a></p>
+    <p>Pay MoMo: <b>+233530946387</b></p>
+    <a href="https://wa.me/233530946387"><button class="vip-btn">JOIN VIP NOW</button></a>
   </div>
 
-  <script src="https://www.paypal.com/sdk/js?client-id=SBx&currency=USD"></script>
-  <script>
-    paypal.Buttons({
-      createOrder: function(data, actions) {
-        return actions.order.create({
-          purchase_units: [{ amount: { value: '10.00' } }] // $10 = ~50GHS
-        });
-      },
-      onApprove: function(data, actions) {
-        alert('Payment Successful! WhatsApp me receipt to get VIP password');
-      }
-    }).render('#paypal-button-container');
-  </script>
 </body>
 </html>
