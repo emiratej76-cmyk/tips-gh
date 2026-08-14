@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body style="background:#0a0a0a; color:white; text-align:center; padding:50px; font-family:Arial;">
+  <h1>👑 VIP PREDICTIONS</h1>
+  <p>Enter Weekly Password:</p>
+  <input type="password" id="pass" style="padding:10px;">
+  <button onclick="check()" style="padding:10px; background:gold; border:none;">Unlock</button>
+  
+  <div id="tips" style="display:none; margin-top:30px;">
+    <h2>Today's 5 VIP Games</h2>
+    <p>1. Real Madrid Win - 1.60</p>
+    <p>2. Over 2.5 Chelsea - 1.80</p>
+    <p>3. BTTS Man U - 1.70</p>
+    <p>4. Corner Over 9.5 - 1.90</p>
+    <p>5. HT/FT Barcelona - 3.50</p>
+  </div>
+
+  <script>
+    function check(){
+      if(document.getElementById('pass').value == "VIP2026"){
+        document.getElementById('tips').style.display = "block";
+      } else { alert('Wrong Password! WhatsApp +233530946387') }
+    }
+  </script>
+</body>
+</html>
