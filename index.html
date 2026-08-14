@@ -4,58 +4,98 @@
   <title>TIP GH - Daily Predictions</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { background: #000; color: white; text-align: center; font-family: Arial; padding: 20px; margin: 0; }
-    h1 { color: #00FF7F; font-size: 32px; }
-    .btn { background: #111; color: white; padding: 12px 18px; border: 2px solid #00FF7F; border-radius: 8px; margin: 5px; display: inline-block; }
-    .btn-green { background: #00FF7F; color: black; }
-    .tip { background: #1a1a1a; margin: 10px auto; padding: 15px; border-left: 4px solid #00FF7F; text-align: left; max-width: 500px; border-radius: 8px; }
-    .vip { background: #111; border: 2px solid #00FF7F; padding: 20px; margin: 20px auto; max-width: 500px; border-radius: 10px; }
-    .vip-btn { background: #00FF7F; color: black; padding: 15px; border: none; border-radius: 8px; width: 100%; font-size: 18px; font-weight: bold; }
+    body { background: #000; color: white; font-family: Arial; margin: 0; padding: 10px; }
+    h1 { color: #00FF7F; text-align: center; }
+    .tabs { display: flex; overflow-x: auto; gap: 10px; padding: 10px 0; }
+    .tab { background: #111; border: 2px solid #00FF7F; padding: 8px 15px; border-radius: 20px; white-space: nowrap; cursor: pointer; }
+    .tab.active { background: #00FF7F; color: black; }
+    .country-content { display: none; }
+    .country-content.active { display: block; }
+    .odds-table { width: 100%; background: #1a1a1a; border-radius: 8px; margin: 10px 0; }
+    .odds-row { display: flex; justify-content: space-between; padding: 12px; border-bottom: 1px solid #333; }
+    .odds { background: #00FF7F; color: black; padding: 5px 10px; border-radius: 5px; font-weight: bold; }
+    .vip, .ref, .login { background: #111; border: 2px solid #00FF7F; padding: 20px; margin: 20px 0; border-radius: 10px; text-align: center; }
+    .btn { background: #00FF7F; color: black; padding: 12px; border: none; border-radius: 8px; width: 100%; font-weight: bold; cursor: pointer; margin-top: 10px; }
+    input { width: 90%; padding: 10px; background: #222; color: #00FF7F; border: 1px solid #00FF7F; text-align: center; margin: 5px 0; }
     a { color: #00FF7F; text-decoration: none; }
+    .locked { filter: blur(5px); pointer-events: none; }
   </style>
 </head>
 <body>
 
   <h1>⚽ TIP GH</h1>
-  <p>5 Free Tips Daily + 5 VIP Sure Odds</p>
 
-  <div class="btn btn-green">Today's Tips</div>
-  <a href="history.html"><div class="btn">Winning History</div></a>
-<a href="vip-payment.html"><div class="btn">VIP Payment</div></a>
-
-  <div class="tip">
-    <b>FREE:</b> Manchester United vs Newcastle<br>
-    Over 2.5 Goals @ 1.72
+  <!-- 1. COUNTRY TABS - CLICKABLE -->
+  <div class="tabs">
+    <div class="tab active" onclick="showCountry('eng')">England</div>
+    <div class="tab" onclick="showCountry('spa')">Spain</div>
+    <div class="tab" onclick="showCountry('ger')">Germany</div>
+    <div class="tab" onclick="showCountry('ita')">Italy</div>
+    <div class="tab" onclick="showCountry('champ')">Champions</div>
   </div>
 
-  <div class="tip">
-    <b>FREE:</b> Real Madrid vs Valencia<br>
-    Real Madrid Win @ 1.45
+  <!-- ENGLAND ODDS -->
+  <div id="eng" class="country-content active">
+    <div class="odds-table">
+      <div class="odds-row"><div>LEE vs TOT</div><div><span class="odds">3.32</span> <span class="odds">2.94</span> <span class="odds">2.39</span></div></div>
+      <div class="odds-row"><div>FUL vs MCI</div><div><span class="odds">2.65</span> <span class="odds">2.84</span> <span class="odds">3.03</span></div></div>
+    </div>
   </div>
 
-  <div class="tip">
-    <b>FREE:</b> Juventus vs Bologna<br>
-    BTTS Yes @ 1.68
+  <!-- SPAIN ODDS -->
+  <div id="spa" class="country-content">
+    <div class="odds-table">
+      <div class="odds-row"><div>RMA vs BAR</div><div><span class="odds">2.10</span> <span class="odds">3.50</span> <span class="odds">3.20</span></div></div>
+    </div>
   </div>
 
-  <div class="tip">
-    <b>FREE:</b> Dortmund vs Stuttgart<br>
-    Over 1.5 Goals @ 1.30
+  <!-- VIP PREDICTIONS - LOCKED -->
+  <div id="vipTips" class="locked">
+    <h3 style="color:#00FF7F; text-align:center;">👑 VIP PREDICTIONS</h3>
+    <div class="odds-table">
+      <div class="odds-row"><div>VIP 1: Correct Score</div><div><span class="odds">8.50</span></div></div>
+      <div class="odds-row"><div>VIP 2: Over 3.5 Goals</div><div><span class="odds">2.10</span></div></div>
+    </div>
   </div>
 
-  <div class="tip">
-    <b>FREE:</b> Galatasaray vs Fenerbahce<br>
-    Draw No Bet: Galatasaray @ 1.55
+  <!-- 2. LOGIN SYSTEM FOR VIP -->
+  <div class="login">
+    <h2>🔒 VIP LOGIN</h2>
+    <p>Enter password to unlock VIP tips</p>
+    <input type="password" id="vipPass" placeholder="Enter VIP Password">
+    <button class="btn" onclick="unlockVIP()">UNLOCK VIP</button>
+    <p>Don't have password? <a href="vip-payment.html">Pay 50 GHS Here</a></p>
   </div>
 
+  <!-- 3. REFERRAL SYSTEM -->
+  <div class="ref">
+    <h2>🔗 YOUR REFERRAL LINK</h2>
+    <p>Earn 10 GHS for each friend who joins VIP</p>
+    <input id="reflink" value="https://emiratej76-c.github.io/tips-gh/?ref=TIPGH" readonly>
+    <button class="btn" onclick="navigator.clipboard.writeText(document.getElementById('reflink').value); alert('Link Copied!')">COPY LINK</button>
+  </div>
+
+  <!-- DEPOSIT BUTTON = WHATSAPP/MOMO -->
   <div class="vip">
-    <h2>👑 VIP SURE ODDS</h2>
-    <p>5 VIP Games Daily</p>
-    <p>Win Rate: 80%+</p>
-    <p><b>50 GHS / Month</b></p>
+    <h2>💰 JOIN VIP - 50 GHS / Month</h2>
     <p>Pay MoMo: <b>+233530946387</b></p>
-    <a href="https://wa.me/233530946387"><button class="vip-btn">JOIN VIP ON WHATSAPP</button></a>
+    <a href="https://wa.me/233530946387"><button class="btn">PAY & GET PASSWORD ON WHATSAPP</button></a>
   </div>
+
+<script>
+  function showCountry(id){
+    document.querySelectorAll('.country-content').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+  }
+  function unlockVIP(){
+    if(document.getElementById('vipPass').value == "VIP2026"){
+      document.getElementById('vipTips').classList.remove('locked');
+      alert('VIP Unlocked!');
+    } else { alert('Wrong Password! Pay to get password'); }
+  }
+</script>
 
 </body>
 </html>
