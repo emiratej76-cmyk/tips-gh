@@ -6,6 +6,9 @@
 <style>
 body{background:#0D0D0D; color:white; font-family:Arial; margin:0; text-align:center;}
 .header{background:#FF4500; padding:12px; font-size:20px; font-weight:bold;}
+#history{padding:8px; background:#1a1a1a; display:flex; gap:6px; overflow-x:auto; justify-content:center;}
+.hist-item{padding:4px 8px; border-radius:15px; font-size:12px; font-weight:bold;}
+.green{background:#00C853;} .red{background:#FF1744;} .purple{background:#9C27B0;}
 #game{height:300px; background:#000; position:relative; overflow:hidden; margin:10px; border-radius:8px;}
 #plane{position:absolute; bottom:20px; left:20px; font-size:35px; transition: all 0.1s linear;}
 #multiplier{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:55px; font-weight:bold; color:#00FF00;}
@@ -19,6 +22,9 @@ body{background:#0D0D0D; color:white; font-family:Arial; margin:0; text-align:ce
 <body>
 
 <div class="header">FLY GH ✈️</div>
+
+<div id="history"></div>
+
 <div class="coins">💰 COINS: <span id="coins">1000</span></div>
 
 <div id="game">
@@ -27,7 +33,7 @@ body{background:#0D0D0D; color:white; font-family:Arial; margin:0; text-align:ce
 </div>
 
 <button class="btn bet" id="betBtn" onclick="startGame()">BET 100 COINS</button>
-<button class="btn cashout" id="cashoutBtn" onclick="cashOut()">CASH OUT 100.00</button>
+<button class="btn cashout" id="cashoutBtn" onclick="cashOut()">CASH OUT 100</button>
 <button class="btn adbtn" onclick="getCoins()">WATCH AD FOR +500 COINS</button>
 
 <p style="font-size:12px; color:gray;">For fun only. No real money.</p>
@@ -37,7 +43,17 @@ let coins = 1000;
 let multiplier = 1.00;
 let playing = false;
 let betAmount = 100;
+let history = [1.45, 2.39, 1.08, 15.60, 1.23]; // starter history
 let interval;
+
+function showHistory(){
+  let html = '';
+  history.slice(-10).forEach(m => {
+    let color = m < 2 ? 'red' : m < 5 ? 'green' : 'purple';
+    html += `<div class="hist-item ${color}">${m.toFixed(2)}x</div>`;
+  });
+  document.getElementById('history').innerHTML = html;
+}
 
 function startGame(){
   if(coins < betAmount || playing) return;
@@ -50,13 +66,12 @@ function startGame(){
   document.getElementById('cashoutBtn').style.display = 'block';
   
   interval = setInterval(()=>{
-    multiplier += 0.04 + Math.random()*0.02; // random speed
+    multiplier += 0.04 + Math.random()*0.02;
     document.getElementById('multiplier').innerText = multiplier.toFixed(2) + 'x';
     document.getElementById('cashoutBtn').innerText = `CASH OUT ${(betAmount * multiplier).toFixed(0)}`;
     document.getElementById('plane').style.bottom = (20 + multiplier*15) + 'px';
     document.getElementById('plane').style.left = (20 + multiplier*15) + 'px';
     
-    // Random crash between 1.00x and 50x
     if(Math.random() < 0.015){
       crash();
     }
@@ -68,15 +83,23 @@ function cashOut(){
   clearInterval(interval);
   let win = betAmount * multiplier;
   coins += win;
+  addToHistory(multiplier);
   updateCoins();
-  alert('✅ You cashed out at ' + multiplier.toFixed(2) + 'x! Won ' + win.toFixed(0) + ' coins');
+  alert('✅ Cashed out at ' + multiplier.toFixed(2) + 'x! Won ' + win.toFixed(0) + ' coins');
   reset();
 }
 
 function crash(){
   clearInterval(interval);
+  addToHistory(multiplier);
   alert('💥 CRASHED at ' + multiplier.toFixed(2) + 'x! You lost.');
   reset();
+}
+
+function addToHistory(m){
+  history.push(m);
+  if(history.length > 20) history.shift();
+  showHistory();
 }
 
 function reset(){
@@ -98,6 +121,7 @@ function getCoins(){
   updateCoins();
 }
 
+showHistory(); // load on start
 </script>
 </body>
 </html>
