@@ -1,173 +1,98 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TIP GH</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial; }
-    body { background: #0D0D0D; color: white; }
-    
-    /* RED TOPBAR */
-    .topbar { background: #E4002B; padding: 12px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 10; }
-    .logo { font-size: 20px; font-weight: bold; color: white; }
-    .balance { background: #111; padding: 5px 10px; border-radius: 20px; font-size: 12px; color: white; border: 1px solid #444; }
-    
-    /* TABS */
-    .main-tabs { display: flex; background: #111; }
-    .main-tab { flex: 1; text-align: center; padding: 12px 5px; font-size: 11px; font-weight: bold; color: #aaa; border-bottom: 3px solid transparent; }
-    .main-tab.active { color: white; border-bottom: 3px solid #E4002B; background: #1A1A1A; }
-    
-    .sub-tabs { display: flex; gap: 15px; padding: 10px; background: #0D0D0D; overflow-x: auto; font-size: 14px; }
-    .sub-tab { color: #aaa; white-space: nowrap; }
-    .sub-tab.active { color: #00C853; font-weight: bold; }
-    
-    /* LEAGUE HEADER */
-    .league { background: white; color: black; padding: 8px 12px; display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: bold; margin-top: 8px; }
-    .hot { background: #E4002B; color: white; padding: 2px 6px; border-radius: 4px; font-size: 10px; }
-    
-    /* MATCH CARD - WHITE LIKE SPORTYBET */
-    .match { background: white; color: black; margin: 5px 8px; padding: 10px; border-radius: 6px; }
-    .match-top { display: flex; justify-content: space-between; font-size: 12px; color: #555; margin-bottom: 8px; }
-    .teams { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-    .team { text-align: center; font-size: 13px; font-weight: 500; }
-    .vs { color: #00C853; font-weight: bold; font-size: 11px; }
-    
-    /* 1X2 ODDS */
-    .odds { display: flex; gap: 5px; }
-    .odd { flex: 1; background: #F1F1F1; padding: 8px 0; text-align: center; border-radius: 4px; }
-    .odd-num { font-size: 10px; color: #555; }
-    .odd-val { font-size: 15px; font-weight: bold; color: #00C853; }
-    
-    /* LIVE SECTION */
-    .live-header { background: black; padding: 10px; display: flex; gap: 15px; overflow-x: auto; }
-    .live-tab { color: #aaa; white-space: nowrap; }
-    .live-tab.active { color: #00C853; font-weight: bold; border-bottom: 2px solid #00C853; }
-    
-    .live-match { background: #1A1A1A; margin: 5px 8px; padding: 10px; border-radius: 6px; }
-    .live-score { display: flex; justify-content: space-between; font-size: 14px; }
-    .live-odds { display: flex; gap: 5px; margin-top: 8px; }
-    .live-odd { flex: 1; background: #222; padding: 8px 0; text-align: center; border-radius: 4px; color: #00C853; font-weight: bold; }
-    
-    /* VIP + LOGIN */
-    .vip { background: #1A1A1A; border: 2px solid gold; margin: 15px 8px; padding: 15px; border-radius: 8px; }
-    .vip-title { color: gold; text-align: center; font-weight: bold; }
-    .locked { filter: blur(5px); }
-    .login { background: #1A1A1A; margin: 15px 8px; padding: 20px; border-radius: 8px; text-align: center; }
-    .btn { background: #E4002B; color: white; width: 100%; padding: 12px; border: none; border-radius: 5px; font-weight: bold; margin-top: 10px; }
-    input { width: 100%; padding: 10px; background: #222; color: white; border: 1px solid #444; border-radius: 5px; text-align: center; margin: 8px 0; }
-  </style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FLY GH - Aviator Game</title>
+<style>
+body{background:#0D0D0D; color:white; font-family:Arial; margin:0; text-align:center;}
+.header{background:#FF0000; padding:12px; font-size:20px; font-weight:bold;}
+#game{height:300px; background:#111; position:relative; overflow:hidden; margin:10px;}
+#plane{position:absolute; bottom:20px; left:20px; font-size:30px; transition: all 0.1s linear;}
+#multiplier{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:50px; font-weight:bold; color:#00C853;}
+.btn{width:90%; padding:15px; margin:8px; border:none; border-radius:8px; font-size:18px; font-weight:bold;}
+.bet{background:#FF0000; color:white;}
+.cashout{background:#00C853; color:black; display:none;}
+.coins{font-size:18px; padding:10px;}
+</style>
 </head>
 <body>
 
-  <!-- RED TOPBAR -->
-  <div class="topbar">
-    <div class="logo">TIP GH</div>
-    <div class="balance">GHS 0.00</div>
-  </div>
+<div class="header">FLY GH ✈️</div>
+<div class="coins">💰 COINS: <span id="coins">1000</span></div>
 
-  <!-- MAIN TABS -->
-  <div class="main-tabs">
-    <div class="main-tab active">TODAY'S<br>FOOTBALL</div>
-    <div class="main-tab">FOOTBALL IN<br>NEXT 3 HOURS</div>
-    <div class="main-tab">VIP GAMES</div>
-  </div>
+<div id="game">
+  <div id="plane">✈️</div>
+  <div id="multiplier">1.00x</div>
 </div>
 
-<!-- DEPOSIT BOX - PASTE HERE -->
-<div style="background:#1A1A1A; margin:15px 8px; padding:15px; border-radius:8px; border:2px solid gold;">
-  <h3 style="color:gold; text-align:center;">💰 BUY VIP - 50 GHS</h3>
-  <p style="text-align:center;">Send 50 GHS to MTN:</p>
-  <p style="text-align:center; font-size:20px; color:#00C853; font-weight:bold;">024 XXX XXXX</p>
-  <p style="text-align:center;">Then click button below</p>
-  <button style="background:#00C853; color:black; width:100%; padding:12px; border:none; border-radius:5px; font-weight:bold;" 
-  onclick="window.open('https://wa.me/233530946387')">
-  SEND PROOF ON WHATSAPP
-  </button>
-</div>
+<button class="btn bet" onclick="startGame()">BET 100 COINS</button>
+<button class="btn cashout" id="cashoutBtn" onclick="cashOut()">CASH OUT</button>
+<button class="btn" style="background:gold; color:black;" onclick="getCoins()">WATCH AD FOR +500 COINS</button>
 
-<!-- MAIN TABS -->
-<div class="main-tabs">
-  <!-- SUB TABS -->
-  <div class="sub-tabs">
-    <div class="sub-tab active">Featured</div>
-    <div class="sub-tab">Matches</div>
-    <div class="sub-tab">Codes</div>
-    <div class="sub-tab">Virtuals</div>
-  </div>
-
-  <!-- LEAGUE -->
-  <div class="league">
-    <span class="hot">HOT</span> Football - Portugal - Liga Portugal
-  </div>
-
-  <!-- MATCH CARD -->
-  <div class="match">
-    <div class="match-top">
-      <span>23:15 | Today</span>
-      <span>1X2</span>
-    </div>
-    <div class="teams">
-      <div class="team">Sporting</div>
-      <div class="vs">vs</div>
-      <div class="team">Vitoria SC</div>
-    </div>
-    <div class="odds">
-      <div class="odd"><div class="odd-num">1</div><div class="odd-val">1.36</div></div>
-      <div class="odd"><div class="odd-num">X</div><div class="odd-val">5.61</div></div>
-      <div class="odd"><div class="odd-num">2</div><div class="odd-val">8.54</div></div>
-    </div>
-    <div style="color:#00C853; font-size:12px; margin-top:8px;">Tip: 1 - Home Win</div>
-  </div>
-
-  <!-- ADD 9 MORE MATCHES HERE -->
-
-  <!-- LIVE SECTION -->
-  <div class="live-header">
-    <div class="live-tab active">Live</div>
-    <div class="live-tab">Football</div>
-    <div class="live-tab">Basketball</div>
-  </div>
-
-  <div class="live-match">
-    <div style="color:#E4002B; font-size:12px;">38:36 H1 Italy - Coppa Italia</div>
-    <div class="live-score">
-      <div>Parma Calcio<br>Calcio Catania</div>
-      <div>2<br>0</div>
-    </div>
-    <div class="live-odds">
-      <div class="live-odd">1.03</div>
-      <div class="live-odd">15.50</div>
-      <div class="live-odd">70.00</div>
-    </div>
-  </div>
-
-  <!-- VIP SECTION -->
-  <div class="vip">
-    <div class="vip-title">👑 5 VIP SURE GAMES</div>
-    <div id="vipGames" class="locked">
-      <div class="match">
-        <div class="teams"><div class="team">VIP 1: ARS 2-1</div></div>
-        <div class="odds"><div class="odd"><div class="odd-num">Odd</div><div class="odd-val">9.50</div></div></div>
-      </div>
-      <!-- Add 4 more VIP -->
-    </div>
-  </div>
-
-  <!-- LOGIN -->
-  <div class="login">
-    <h3>🔒 UNLOCK VIP</h3>
-    <input type="password" id="vipPass" placeholder="Enter VIP Password">
-    <button class="btn" onclick="unlockVIP()">UNLOCK NOW</button>
-  </div>
+<p style="font-size:12px; color:gray;">For fun only. No real money.</p>
 
 <script>
-  function unlockVIP(){
-    if(document.getElementById('vipPass').value == "VIP2026"){
-      document.getElementById('vipGames').classList.remove('locked');
-      alert('VIP Unlocked!');
-    } else { alert('Wrong Password!'); }
-  }
-</script>
+let coins = 1000;
+let multiplier = 1.00;
+let playing = false;
+let interval;
 
+function startGame(){
+  if(coins < 100 || playing) return;
+  coins -= 100;
+  updateCoins();
+  playing = true;
+  multiplier = 1.00;
+  document.querySelector('.bet').style.display = 'none';
+  document.getElementById('cashoutBtn').style.display = 'block';
+  
+  interval = setInterval(()=>{
+    multiplier += 0.05;
+    document.getElementById('multiplier').innerText = multiplier.toFixed(2) + 'x';
+    document.getElementById('plane').style.bottom = (20 + multiplier*20) + 'px';
+    document.getElementById('plane').style.left = (20 + multiplier*20) + 'px';
+    
+    // Random crash
+    if(Math.random() < 0.02){
+      crash();
+    }
+  },100);
+}
+
+function cashOut(){
+  if(!playing) return;
+  let win = 100 * multiplier;
+  coins += win;
+  updateCoins();
+  alert('You cashed out at ' + multiplier.toFixed(2) + 'x! Won ' + win.toFixed(0) + ' coins');
+  reset();
+}
+
+function crash(){
+  clearInterval(interval);
+  alert('CRASHED at ' + multiplier.toFixed(2) + 'x! You lost.');
+  reset();
+}
+
+function reset(){
+  playing = false;
+  document.querySelector('.bet').style.display = 'block';
+  document.getElementById('cashoutBtn').style.display = 'none';
+  document.getElementById('multiplier').innerText = '1.00x';
+  document.getElementById('plane').style.bottom = '20px';
+  document.getElementById('plane').style.left = '20px';
+}
+
+function updateCoins(){
+  document.getElementById('coins').innerText = coins.toFixed(0);
+}
+
+function getCoins(){
+  alert('Watch ad here'); // Later we add Google Ad
+  coins += 500;
+  updateCoins();
+}
+
+</script>
 </body>
 </html>
