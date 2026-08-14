@@ -3,55 +3,87 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tips GH - Free & VIP Bet Tips</title>
+<title>TIP GH - Daily Football Tips</title>
 <style>
-  body {font-family: Arial; background:#0f172a; color:white; margin:0; padding:20px;}
-  h1 {text-align:center; color:#22c55e;}
-  .card {background:#1e293b; padding:15px; border-radius:12px; margin:15px 0;}
-  .badge {padding:4px 10px; border-radius:20px; font-size:12px; font-weight:bold;}
-  .free {background:#22c55e;}
-  .vip {background:#facc15; color:#000;}
-  .btn {display:inline-block; padding:10px 15px; background:#22c55e; color:white; 
-        text-decoration:none; border-radius:8px; margin-top:10px;}
-  .vip-blur {filter: blur(4px); pointer-events:none;}
+  body { font-family: Arial; background: #0a0a0a; color: #fff; margin: 0; padding: 20px; }
+  .header { text-align: center; margin-bottom: 20px; }
+  .header h1 { color: #00ff88; }
+  .tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
+  .tab { padding: 10px 20px; background: #1a1a1a; border-radius: 8px; cursor: pointer; border: 2px solid #00ff88; }
+  .tab.active { background: #00ff88; color: #000; font-weight: bold; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .tip-card { background: #1a1a1a; padding: 15px; margin: 10px 0; border-radius: 10px; border-left: 4px solid #00ff88; }
+  .vip { border-left-color: #ffaa00; filter: blur(4px); }
+  .vip-btn { background: #00ff88; color: #000; padding: 10px; border: none; border-radius: 5px; font-weight: bold; width: 100%; margin-top: 10px; cursor: pointer; }
+  .win { color: #00ff88; font-weight: bold; }
+  .loss { color: #ff4444; }
+  .payment { background: #1a1a1a; padding: 20px; border-radius: 10px; text-align: center; }
+  .payment h2 { color: #00ff88; }
 </style>
 </head>
-<body><div style="background:linear-gradient(90deg,#facc15,#22c55e);padding:15px;text-align:center;border-radius:12px;margin-bottom:20px">
-  <h2 style="margin:0;color:#000">🔥 JOIN VIP TODAY</h2>
-  <p style="margin:5px 0;color:#000">Get 5+ Winning Tips Daily</p>
-  <a href="https://wa.me/233530946387" style="background:#000;color:#facc15;padding:12px 25px;border-radius:8px;text-decoration:none;font-weight:bold;display:inline-block;margin-top:8px">JOIN VIP ON WHATSAPP</a>
+<body>
+
+<div class="header">
+  <h1>⚽ TIP GH</h1>
+  <p>5 Free Tips Daily + 5 VIP Sure Odds</p>
 </div>
 
-<h1>⚽ Tips GH</h1>
-<p style="text-align:center;">Daily Free & VIP Betting Tips</p>
+<div class="tabs">
+  <div class="tab active" onclick="showTab('tips')">Today's Tips</div>
+  <div class="tab" onclick="showTab('history')">Winning History</div>
+  <div class="tab" onclick="showTab('vip')">VIP Payment</div>
+</div>
 
-<div id="tips"></div>
+<div id="tips" class="section active"></div>
+
+<div id="history" class="section">
+  <h2>🏆 Recent Results</h2>
+  <div class="tip-card"><span class="win">WON ✅</span> Man City vs Arsenal: BTTS Yes - 2-2</div>
+  <div class="tip-card"><span class="win">WON ✅</span> VIP Correct Score: 3-1 @ 15.00</div>
+  <div class="tip-card"><span class="win">WON ✅</span> Real Madrid: Win @ 1.45</div>
+  <div class="tip-card"><span class="loss">LOST ❌</span> Over 2.5 Goals</div>
+  <div class="tip-card"><span class="win">WON ✅</span> VIP HT/FT: 1/1 @ 2.25</div>
+</div>
+
+<div id="vip" class="section">
+  <div class="payment">
+    <h2>🔒 JOIN VIP</h2>
+    <p><b>$10 / Week</b></p>
+    <p>✓ 5 VIP Sure Odds Daily<br>✓ Correct Scores<br>✓ Big Odds Combos<br>✓ Direct WhatsApp Access</p>
+    <p><b>Payment:</b> Mobile Money / Binance</p>
+    <button class="vip-btn" onclick="window.open('https://wa.me/233530946387?text=Hello%20I%20want%20to%20join%20VIP')">JOIN VIP ON WHATSAPP</button>
+  </div>
+</div>
 
 <script>
- const articles = [
-  // 5 FREE TIPS
+const articles = [
   {id: 1, title: "Manchester United vs Newcastle", category: "FREE", content: "Over 2.5 Goals @ 1.72", isVIP: false},
   {id: 2, title: "Real Madrid vs Valencia", category: "FREE", content: "Real Madrid Win @ 1.45", isVIP: false},
   {id: 3, title: "Juventus vs Bologna", category: "FREE", content: "BTTS Yes @ 1.68", isVIP: false},
   {id: 4, title: "Dortmund vs Stuttgart", category: "FREE", content: "Over 1.5 Goals @ 1.30", isVIP: false},
   {id: 5, title: "Galatasaray vs Fenerbahce", category: "FREE", content: "Draw No Bet: Galatasaray @ 1.55", isVIP: false},
-  
-  // 5 VIP TIPS - BLURRED
   {id: 6, title: "PSG vs Monaco", category: "VIP", content: "VIP CORRECT SCORE: 3-2 @ 16.00", isVIP: true},
   {id: 7, title: "Inter vs Napoli", category: "VIP", content: "VIP HT/FT: 1/1 @ 2.25", isVIP: true},
   {id: 8, title: "Liverpool vs Brighton", category: "VIP", content: "VIP Under 3.5 + BTTS @ 3.10", isVIP: true},
   {id: 9, title: "Barcelona vs Athletic Bilbao", category: "VIP", content: "VIP SURE 2 ODDS: Home Win @ 2.50", isVIP: true},
   {id: 10, title: "Ajax vs AZ Alkmaar", category: "VIP", content: "VIP 5+ ODDS COMBO. Join to unlock", isVIP: true}
-]; 
+];
 
-const tipsDiv = document.getElementById("tips");
+function showTab(tabName) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(tabName).classList.add('active');
+  event.target.classList.add('active');
+}
+
+const tipsDiv = document.getElementById('tips');
 articles.forEach(a => {
   tipsDiv.innerHTML += `
-    <div class="card">
-      <span class="badge ${a.isVIP ? 'vip' : 'free'}">${a.category}</span>
-      <h3>${a.title}</h3>
-      <p class="${a.isVIP ? 'vip-blur' : ''}">${a.content}</p>
-      ${a.isVIP ? '<a href="https://wa.me/233530946387" class="btn">🔒 Unlock VIP on WhatsApp</a>' : ''}
+    <div class="tip-card ${a.isVIP ? 'vip' : ''}">
+      <b>${a.category}</b>: ${a.title}<br>
+      ${a.content}
+      ${a.isVIP ? '<button class="vip-btn" onclick="window.open(\'https://wa.me/233530946387\')">JOIN VIP TO UNLOCK</button>' : ''}
     </div>
   `;
 });
