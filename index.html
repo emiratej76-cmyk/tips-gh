@@ -2,146 +2,70 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FLY GH - Aviator Game</title>
-<script> async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5870062832035254"
-     crossorigin="anonymous"></script>< style></style>
- <body{background:#0D0D0D; color:white; font-family:Arial; margin:0; text-align:center;}
-.header{background:#FF4500; padding:12px; font-size:20px; font-weight:bold;}
-#leaderboard{background:#1a1a1a; padding:8px; font-size:14px;}
-#history{padding:8px; background:#1a1a1a; display:flex; gap:6px; overflow-x:auto; justify-content:center;}
-.hist-item{padding:4px 8px; border-radius:15px; font-size:12px; font-weight:bold;}
-.green{background:#00C853;} .red{background:#FF1744;} .purple{background:#9C27B0;}
-#game{height:300px; background:#000; position:relative; overflow:hidden; margin:10px; border-radius:8px;}
-#plane{position:absolute; bottom:20px; left:20px; font-size:35px; transition: all 0.1s linear;}
-#multiplier{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:55px; font-weight:bold; color:#00FF00;}
-.btn{width:95%; padding:16px; margin:8px auto; border:none; border-radius:8px; font-size:18px; font-weight:bold; display:block;}
-.bet{background:#FF4500; color:white;}
-.cashout{background:#00C853; color:black; display:none;}
-.adbtn{background:gold; color:black;}
-.coins{font-size:18px; padding:10px; font-weight:bold;}
-.adspace{background:#222; margin:10px; padding:20px; border-radius:8px; color:gray;}
+<title>Aviator - FLY GH</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5870062832035254"
+     crossorigin="anonymous"></script>
+<style>
+*{margin:0; padding:0; box-sizing:border-box; font-family:Arial;}
+body{background:#0F1116; color:white;}
+.header{background:#1A1D23; padding:10px; display:flex; justify-content:space-between; align-items:center;}
+.logo{color:#FF3B30; font-size:20px; font-weight:bold;}
+.balance{font-weight:bold;}
+.history{display:flex; gap:8px; padding:10px; overflow-x:auto; background:#1A1D23;}
+.hist{padding:4px 10px; border-radius:20px; font-size:12px; font-weight:bold;}
+.g1{background:#00C853;} .g2{background:#2979FF;} .g3{background:#D500F9;} .g4{background:#FF6D00;}
+.game{background:linear-gradient(180deg,#1a0000 0%, #0F1116 100%); height:250px; position:relative; overflow:hidden; border-radius:12px; margin:10px;}
+.graph{position:absolute; bottom:0; left:0; width:100%; height:100%;}
+.plane{position:absolute; font-size:30px; color:#FF3B30;}
+.multi{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:60px; font-weight:bold; color:white;}
+.betbox{background:#1A1D23; margin:10px; padding:10px; border-radius:12px;}
+.betrow{display:flex; gap:10px;}
+.amount{flex:1; background:#2A2E38; padding:15px; border-radius:8px; text-align:center; font-size:18px; font-weight:bold;}
+.bigbtn{flex:2; padding:20px; border:none; border-radius:8px; font-size:20px; font-weight:bold;}
+.betbtn{background:#00C853; color:white;}
+.cashbtn{background:#FF9500; color:white;}
+.adspace{background:#222; margin:10px; padding:20px; text-align:center; border:2px dashed gray; color:gray;}
 </style>
 </head>
 <body>
-
-<div class="header">FLY GH ✈️</div>
-<div id="leaderboard">👑 TOP TODAY: <span id="topPlayer">You - 0</span> COINS</div>
-<div id="history"></div>
-<div class="coins">💰 COINS: <span id="coins">1000</span></div>
-
-<div id="game">
-  <div id="plane">✈️</div>
-  <div id="multiplier">1.00x</div>
+<div class="header">
+  <div class="logo">Aviator</div>
+  <div class="balance"><span id="coins">1000</span> COINS</div>
 </div>
 
-<button class="btn bet" id="betBtn" onclick="startGame()">BET 100 COINS</button>
-<button class="btn cashout" id="cashoutBtn" onclick="cashOut()">CASH OUT 100</button>
-<button class="btn adbtn" onclick="watchAd()">WATCH AD FOR +500 COINS</button>
-
-<div class="adspace">
-  <!-- PASTE YOUR GOOGLE ADSENSE CODE HERE -->
-  AD BANNER SPACE
+<div class="history" id="history">
+  <div class="hist g1">1.29x</div><div class="hist g2">2.25x</div><div class="hist g3">37.38x</div>
+  <div class="hist g1">2.90x</div><div class="hist g3">70.29x</div>
 </div>
 
-<p style="font-size:12px; color:gray;">For fun only. No real money.</p>
+<div class="game">
+  <svg class="graph" id="graph"></svg>
+  <div class="plane" id="plane">✈️</div>
+  <div class="multi" id="multi">1.00x</div>
+</div>
 
-<audio id="flySound" src="https://www.soundjay.com/misc/sounds/jet-fly-by-01.mp3"></audio>
-<audio id="crashSound" src="https://www.soundjay.com/misc/sounds/explosion-01.mp3"></audio>
+<div class="betbox">
+  <div class="betrow">
+    <div class="amount">0.10<br><span style="font-size:12px;">COINS</span></div>
+    <button class="bigbtn cashbtn" onclick="cashout()">Cash Out<br><span id="cashoutVal">0.10</span></button>
+  </div>
+</div>
+
+<div class="betbox">
+  <div class="betrow">
+    <div class="amount">1.00<br><span style="font-size:12px;">COINS</span></div>
+    <button class="bigbtn betbtn" onclick="bet()">Bet<br><span>1.00</span></button>
+  </div>
+</div>
+
+<div class="adspace">AD BANNER SPACE</div>
 
 <script>
-let coins = 1000;
-let multiplier = 1.00;
-let playing = false;
-let betAmount = 100;
-let history = [1.45, 2.39, 1.08, 15.60, 1.23];
-let topScore = 0;
-let interval;
-
-function showHistory(){
-  let html = '';
-  history.slice(-10).forEach(m => {
-    let color = m < 2 ? 'red' : m < 5 ? 'green' : 'purple';
-    html += `<div class="hist-item ${color}">${m.toFixed(2)}x</div>`;
-  });
-  document.getElementById('history').innerHTML = html;
-}
-
-function startGame(){
-  if(coins < betAmount || playing) return;
-  coins -= betAmount;
-  if(coins <= 0) coins = 100; // AUTO REFILL
-  updateCoins();
-  playing = true;
-  multiplier = 1.00;
-  
-  document.getElementById('betBtn').style.display = 'none';
-  document.getElementById('cashoutBtn').style.display = 'block';
-  document.getElementById('flySound').play();
-  
-  interval = setInterval(()=>{
-    multiplier += 0.04 + Math.random()*0.02;
-    document.getElementById('multiplier').innerText = multiplier.toFixed(2) + 'x';
-    document.getElementById('cashoutBtn').innerText = `CASH OUT ${(betAmount * multiplier).toFixed(0)}`;
-    document.getElementById('plane').style.bottom = (20 + multiplier*15) + 'px';
-    document.getElementById('plane').style.left = (20 + multiplier*15) + 'px';
-    
-    if(Math.random() < 0.015){
-      crash();
-    }
-  },100);
-}
-
-function cashOut(){
-  if(!playing) return;
-  clearInterval(interval);
-  document.getElementById('flySound').pause();
-  let win = betAmount * multiplier;
-  coins += win;
-  if(coins > topScore){
-    topScore = coins;
-    document.getElementById('topPlayer').innerText = 'You - ' + topScore.toFixed(0);
-  }
-  addToHistory(multiplier);
-  updateCoins();
-  alert('✅ Cashed out at ' + multiplier.toFixed(2) + 'x! Won ' + win.toFixed(0) + ' coins');
-  reset();
-}
-
-function crash(){
-  clearInterval(interval);
-  document.getElementById('flySound').pause();
-  document.getElementById('crashSound').play();
-  addToHistory(multiplier);
-  alert('💥 CRASHED at ' + multiplier.toFixed(2) + 'x! You lost.');
-  reset();
-}
-
-function addToHistory(m){
-  history.push(m);
-  if(history.length > 20) history.shift();
-  showHistory();
-}
-
-function reset(){
-  playing = false;
-  document.getElementById('betBtn').style.display = 'block';
-  document.getElementById('cashoutBtn').style.display = 'none';
-  document.getElementById('multiplier').innerText = '1.00x';
-  document.getElementById('plane').style.bottom = '20px';
-  document.getElementById('plane').style.left = '20px';
-}
-
-function updateCoins(){
-  document.getElementById('coins').innerText = coins.toFixed(0);
-}
-
-function watchAd(){
-  alert('Watch ad here - Paste AdSense code above');
-  coins += 500;
-  updateCoins();
-}
-
-showHistory();
+let coins=1000; let playing=false; let multi=1.00; let betAmount=100;
+function bet(){ if(!playing){playing=true; coins-=betAmount; updateCoins(); startGame();}}
+function cashout(){ if(playing){playing=false; coins+=betAmount*multi; updateCoins();}}
+function updateCoins(){document.getElementById('coins').innerText=coins;}
+function startGame(){multi=1.00; let int=setInterval(()=>{if(!playing){clearInterval(int); return;} multi+=0.01; document.getElementById('multi').innerText=multi.toFixed(2)+'x'; document.getElementById('cashoutVal').innerText=(betAmount*multi).toFixed(2); if(multi>10){playing=false; clearInterval(int);}},100);}
 </script>
 </body>
 </html>
