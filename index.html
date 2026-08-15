@@ -1,207 +1,118 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aviator - FLY GH</title>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5870062832035254"
-     crossorigin="anonymous"></script>
+<title>Aviator Pro</title>
 <style>
-*{margin:0; padding:0; box-sizing:border-box; font-family:Arial;}
-body{background:#0F1116; color:white;}
-.header{background:#000; padding:12px; text-align:center; font-size:18px; font-weight:bold;}
-.logo{color:#FF3B30; font-size:22px; font-weight:bold; padding:8px;}
-.balancebar{display:flex; justify-content:space-between; padding:0 12px 8px;}
-.balance{font-weight:bold;}
-.depositbtn{background:#FF9500; color:black; border:none; padding:6px 12px; border-radius:6px; font-weight:bold;}
-.history{display:flex; gap:6px; padding:8px; overflow-x:auto; background:#1A1D23;}
-.hist{padding:3px 8px; border-radius:15px; font-size:11px; font-weight:bold;}
-.h1{color:#9C27B0;} .h2{color:#00C853;} .h3{color:#2979FF;} .h4{color:#FF6D00;}
-.game{background:radial-gradient(circle at center, #2a0000 0%, #0F1116 70%); height:260px; position:relative; overflow:hidden; border-radius:12px; margin:10px; border:1px solid #333;}
-#curve{position:absolute; bottom:0; left:0; width:100%; height:100%;}
-.plane{position:absolute; font-size:26px; left:10px; bottom:10px; z-index:2;}
-.status{position:absolute; top:30%; left:50%; transform:translate(-50%,-50%); font-size:18px; color:white; z-index:2;}
-.multi{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:65px; font-weight:bold; color:white; z-index:2;}
-.betpanel{background:#1A1D23; margin:10px; padding:12px; border-radius:12px;}
-.bettabs{display:flex; background:#2A2E38; border-radius:8px; margin-bottom:10px;}
-.tab{flex:1; padding:8px; text-align:center; border-radius:8px; font-size:14px;}
-.active{background:#3A3E48;}
-.controls{display:flex; gap:10px; align-items:center;}
-.amountbox{background:#2A2E38; padding:10px; border-radius:8px; text-align:center; width:90px;}
-.amountbox button{background:#3A3E48; color:white; border:none; padding:4px 10px; border-radius:4px; margin:2px; width:30px;}
-.bigbtn{flex:1; padding:22px; border:none; border-radius:10px; font-size:20px; font-weight:bold; background:#00C853; color:white;}
-.cashbtn{background:#FF9500;}
-.disabled{opacity:0.5; pointer-events:none;}
-.quick{display:flex; gap:6px; margin-top:8px;}
-.quick button{flex:1; background:#2A2E38; border:none; color:white; padding:6px; border-radius:6px;}
-.adspace{background:#222; margin:10px; padding:20px; text-align:center; border:2px dashed gray; color:gray;}
+  body { background:#0F1218; color:white; font-family: Arial; margin:0; padding:0; }
+ .header { background:#1A1D23; padding:12px; text-align:center; font-size:20px; font-weight:bold; color:#FF3D00; }
+ .game-area { background:#12151C; height:300px; display:flex; align-items:center; justify-content:center; font-size:40px; border-bottom:2px solid #2A2E38; }
+ .multi { color:#00C853; }
+ .panels { display:flex; gap:10px; padding:10px; }
+ .bet-box { flex:1; background:#1A1D23; padding:10px; border-radius:12px; }
+ .bet-box input { width:90%; padding:8px; background:#2A2E38; border:none; color:white; border-radius:6px; margin:5px 0; }
+ .btn { width:100%; padding:12px; border:none; border-radius:8px; font-weight:bold; font-size:16px; }
+ .btn-bet { background:#2979FF; color:white; }
+ .btn-cash { background:#00C853; color:white; }
+ .history { display:flex; gap:5px; padding:10px; overflow-x:auto; }
+ .history span { background:#2A2E38; padding:4px 8px; border-radius:6px; font-size:12px; }
+ .players { background:#1A1D23; margin:10px; padding:10px; border-radius:12px; }
 </style>
 </head>
 <body>
-<div class="header">Aviator</div>
-<div class="logo">Aviator</div>
-<div class="balancebar">
-  <div class="balance"><span id="coins">0.36</span> GHS</div>
-  <button class="depositbtn" onclick="deposit()">+ DEPOSIT</button>
+
+<div class="header">AVIATOR PRO</div>
+
+<div class="game-area">
+  <div>✈️ <span class="multi" id="multi">1.00x</span></div>
 </div>
 
-<div class="history" id="history">
-  <div class="hist h4">13.02x</div><div class="hist h3">3.00x</div><div class="hist h4">11.34x</div>
-</div>
+<div class="history" id="history"></div>
 
-<div class="game">
-  <svg id="curve"></svg>
-  <div class="status" id="status"></div>
-  <div class="plane" id="plane">✈️</div>
-  <div class="multi" id="multi">0.00x</div>
-</div>
-
-<div class="betpanel">
-  <div class="bettabs"><div class="tab active">Bet</div><div class="tab">Auto</div></div>
-  <div class="controls">
-    <div class="amountbox">
-      <button onclick="changeBet(1,-1)">-</button>
-      <div id="bet1">50</div>
-      <button onclick="changeBet(1,1)">+</button>
-      <div style="font-size:12px;">GHS</div>
-    </div>
-    <button class="bigbtn" id="btn1">Bet<br><span id="betVal1">50</span> GHS</button>
+<div class="panels">
+  <div class="bet-box">
+    <h4>Bet 1</h4>
+    <input type="number" value="10.00" id="bet1">
+    <button class="btn btn-bet" onclick="bet(1)">Bet</button>
+    <button class="btn btn-cash" onclick="cashout(1)">Cash Out</button>
   </div>
-  <div class="quick">
-    <button onclick="setBet(1,1)">1</button><button onclick="setBet(1,5)">5</button>
-    <button onclick="setBet(1,10)">10</button><button onclick="setBet(1,50)">50</button>
+  <div class="bet-box">
+    <h4>Bet 2</h4>
+    <input type="number" value="10.00" id="bet2">
+    <button class="btn btn-bet" onclick="bet(2)">Bet</button>
+    <button class="btn btn-cash" onclick="cashout(2)">Cash Out</button>
   </div>
 </div>
 
-<div class="betpanel">
-  <div class="bettabs"><div class="tab active">Bet</div><div class="tab">Auto</div></div>
-  <div class="controls">
-    <div class="amountbox">
-      <button onclick="changeBet(2,-1)">-</button>
-      <div id="bet2">50.02</div>
-      <button onclick="changeBet(2,1)">+</button>
-      <div style="font-size:12px;">GHS</div>
-    </div>
-    <button class="bigbtn" id="btn2">Bet<br><span id="betVal2">50.02</span> GHS</button>
+<div class="players">
+  <div style="display:flex; gap:10px; margin-bottom:10px;">
+    <div style="flex:1; text-align:center; background:#3A3E48; padding:8px; border-radius:8px; font-weight:bold;">All Bets</div>
   </div>
-  <div class="quick">
-    <button onclick="setBet(2,1)">1</button><button onclick="setBet(2,5)">5</button>
-    <button onclick="setBet(2,10)">10</button><button onclick="setBet(2,50)">50</button>
-  </div>
+  <div id="players" style="font-size:12px; max-height:220px; overflow-y:auto;"></div>
 </div>
-
-<div class="adspace">AD BANNER SPACE</div>
 
 <script>
-let coins=0.36; 
-let playing=false; 
-let multi=0; 
-let bet1=50, bet2=50.02;
-let playing1=false, playing2=false;
-let interval;
-let points=[];
+let currentMulti = 1.00;
+let crashPoint = 2.5;
+let gameRunning = false;
+let bets = {1:0, 2:0};
 
-function deposit(){
-  let add = prompt("How much GHS to deposit?");
-  if(add && !isNaN(add)){
-    coins += parseFloat(add);
-    updateCoins();
-  }
-}
-
-function changeBet(n,amt){
-  if(n==1){bet1=Math.max(1, bet1+amt); document.getElementById('bet1').innerText=bet1; document.getElementById('betVal1').innerText=bet1;}
-  if(n==2){bet2=Math.max(1, bet2+amt); document.getElementById('bet2').innerText=bet2; document.getElementById('betVal2').innerText=bet2;}
-}
-function setBet(n,val){ if(n==1){bet1=val; changeBet(1,0);} if(n==2){bet2=val; changeBet(2,0);} }
-
-function bet(n){ 
-  let amount = n==1?bet1:bet2;
-  if(coins < amount){ alert("Low balance! Click DEPOSIT"); return;}
-  if(!playing){startGame();}
-  if(n==1){playing1=true; coins-=amount; updateBtn(1,"CASH OUT",amount);}
-  if(n==2){playing2=true; coins-=amount; updateBtn(2,"CASH OUT",amount);}
-  updateCoins();
-}
-
-function cashout(n){
-  let amount = n==1?bet1:bet2;
-  let win = amount * multi;
-  coins+=win;
-  if(n==1){playing1=false; updateBtn(1,"Bet",amount);}
-  if(n==2){playing2=false; updateBtn(2,"Bet",amount);}
-  updateCoins();
-}
-
-function updateBtn(n,text,amount){
-  let btn = document.getElementById('btn'+n);
-  if(text=="CASH OUT"){
-    btn.innerHTML=`Cash Out<br><span id="cash${n}">0.00</span> GHS`;
-    btn.className="bigbtn cashbtn";
-    btn.onclick=()=>cashout(n);
-  } else {
-    btn.innerHTML=`Bet<br><span>${amount}</span> GHS`;
-    btn.className="bigbtn";
-    btn.onclick=()=>bet(n);
-  }
-}
-
-function updateCoins(){ 
-  document.getElementById('coins').innerText=coins.toFixed(2);
-  // disable buttons if no money
-  document.getElementById('btn1').classList.toggle('disabled', coins < bet1 && !playing1);
-  document.getElementById('btn2').classList.toggle('disabled', coins < bet2 && !playing2);
-}
-
-function startGame(){
-  if(playing) return;
-  playing=true; multi=0; points=[];
-  document.getElementById('status').innerText="";
-  document.getElementById('multi').style.color="white";
-  let crash = 1 + Math.random()*20;
-  
-  interval=setInterval(()=>{
-    multi+=0.03;
-    document.getElementById('multi').innerText=multi.toFixed(2)+'x';
-    
-    // UPDATE CASHOUT AMOUNT LIVE
-    if(playing1) document.getElementById('cash1').innerText=(bet1*multi).toFixed(2);
-    if(playing2) document.getElementById('cash2').innerText=(bet2*multi).toFixed(2);
-    
-    let x = (multi-1)*18;
-    let y = (multi-1)*12;
-    points.push(`${x},${260-y}`);
-    document.getElementById('curve').innerHTML=`<polyline points="0,260 ${points.join(' ')}" fill="none" stroke="#FF3B30" stroke-width="3"/>`;
-    document.getElementById('plane').style.left=(x+10)+'px';
-    document.getElementById('plane').style.bottom=(y+10)+'px';
-    
-    if(multi>=crash){
-      playing=false;
+function startRound(){
+  currentMulti = 1.00;
+  crashPoint = (Math.random()*10 + 1.1).toFixed(2); // random crash
+  gameRunning = true;
+  let interval = setInterval(()=>{
+    currentMulti += 0.02;
+    document.getElementById('multi').innerText = currentMulti.toFixed(2)+'x';
+    if(currentMulti >= crashPoint){
       clearInterval(interval);
-      document.getElementById('status').innerText="FLEW AWAY!";
-      document.getElementById('multi').style.color="#FF3B30";
-      addToHistory(multi);
-      setTimeout(resetGame,3000);
+      gameRunning = false;
+      addHistory(crashPoint);
+      setTimeout(startRound, 3000);
     }
-  },50);
+  }, 50);
 }
 
-function resetGame(){
-  multi=0; document.getElementById('multi').innerText="0.00x";
-  document.getElementById('curve').innerHTML="";
-  document.getElementById('plane').style.left="10px";
-  document.getElementById('plane').style.bottom="10px";
-  playing1=playing2=false;
-  updateBtn(1,"Bet",bet1);
-  updateBtn(2,"Bet",bet2);
+function bet(id){
+  bets[id] = document.getElementById('bet'+id).value;
+  alert('Bet '+id+' placed: '+bets[id]+' GHS');
 }
 
-function addToHistory(m){
-  let h=document.getElementById('history');
-  let color=m<2?'h2':m<10?'h3':m<20?'h4':'h1';
-  h.innerHTML=`<div class="hist ${color}">${m.toFixed(2)}x</div>`+h.innerHTML;
+function cashout(id){
+  if(bets[id] > 0 && gameRunning){
+    let win = (bets[id] * currentMulti).toFixed(2);
+    alert('Cashed Out Bet '+id+': '+win+' GHS');
+    bets[id] = 0;
+  }
 }
 
-updateCoins();
+function addHistory(multi){
+  let span = document.createElement('span');
+  span.style.color = multi > 2? '#00C853' : '#FF3D00';
+  span.innerText = multi+'x';
+  document.getElementById('history').prepend(span);
+}
+
+// FAKE PLAYERS
+let names = ["Kofi_23", "Ama_Wins", "Yaw_777", "QueenB", "ProPlayer", "BossMan"];
+function addPlayer(){
+  let name = names[Math.floor(Math.random()*names.length)];
+  let bet = (Math.random()*200+10).toFixed(2);
+  let multi = (Math.random()*15+1.01).toFixed(2);
+  let cashout = (bet*multi).toFixed(2);
+  let div = document.createElement('div');
+  div.style = "display:flex; justify-content:space-between; padding:6px 4px; border-bottom:1px solid #2A2E38;";
+  div.innerHTML = `<span>${name}</span><span>${bet}</span><span style="color:#2979FF;">${multi}x</span><span style="color:#00C853;">${cashout}</span>`;
+  let players = document.getElementById('players');
+  players.prepend(div);
+  if(players.children.length > 15) players.removeChild(players.lastChild);
+}
+setInterval(addPlayer, 1500);
+for(let i=0; i<8; i++) addPlayer();
+
+startRound();
 </script>
+
 </body>
 </html>
