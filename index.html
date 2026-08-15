@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Aviator Pro</title>
+<title>Aviator Demo</title>
 <style>
 body { background:#0D1117; color:white; font-family:Arial; margin:0; }
 .header { display:flex; justify-content:space-between; padding:15px; background:#161B22; font-weight:bold; }
 .game-area { text-align:center; padding:50px; background:#1C2128; }
 .multi { font-size:60px; font-weight:bold; color:#00C853; }
-.history { display:flex; gap:5px; padding:10px; background:#161B22; overflow-x:auto; }
-.history span { background:#2A2E38; padding:5px 10px; border-radius:5px; }
 .panels { display:flex; gap:10px; padding:10px; }
 .bet-box { background:#161B22; padding:15px; border-radius:10px; flex:1; }
 .bet-box input { width:95%; padding:8px; margin:5px 0; background:#2A2E38; border:none; color:white; border-radius:5px; }
@@ -18,19 +16,14 @@ body { background:#0D1117; color:white; font-family:Arial; margin:0; }
 </style>
 </head>
 <body>
-
 <div class="header">
-  <div>AVIATOR PRO</div>
-  <div id="balance">Balance: 10000.00 GHS</div>
+  <div>AVIATOR DEMO</div>
+  <div id="balance">Coins: 10000.00</div>
 </div>
-
 <div class="game-area">
   <div style="font-size:80px;">✈️</div>
   <div class="multi" id="multi">1.00x</div>
 </div>
-
-<div class="history" id="history"></div>
-
 <div class="panels">
   <div class="bet-box">
     <h4>Bet 1</h4>
@@ -43,79 +36,12 @@ body { background:#0D1117; color:white; font-family:Arial; margin:0; }
     <button class="btn btn-bet" id="btn2" onclick="bet(2)">Bet</button>
   </div>
 </div>
-
 <script>
-let multiplier = 1.00;
-let running = false;
-let balance = 10000;
-let activeBets = {1:0, 2:0};
-
-function startRound() {
-  multiplier = 1.00;
-  running = true;
-  activeBets = {1:0, 2:0};
-  let crashPoint = (Math.random() * 9 + 1.01).toFixed(2);
-  document.getElementById('multi').style.color = '#00C853';
-  document.getElementById('multi').innerText = '1.00x';
-  document.getElementById('btn1').innerText = 'Bet';
-  document.getElementById('btn2').innerText = 'Bet';
-  document.getElementById('btn1').style.background = '#2979FF';
-  document.getElementById('btn2').style.background = '#2979FF';
-  
-  let interval = setInterval(() => {
-    if(running) {
-      multiplier += 0.02;
-      document.getElementById('multi').innerText = multiplier.toFixed(2) + 'x';
-      if(multiplier > 2) document.getElementById('multi').style.color = '#FFD600';
-      if(multiplier > 5) document.getElementById('multi').style.color = '#FF3D00';
-      if(multiplier >= crashPoint) {
-        running = false;
-        clearInterval(interval);
-        document.getElementById('multi').innerText = 'CRASHED @ ' + crashPoint + 'x';
-        document.getElementById('multi').style.color = '#FF3D00';
-        addHistory(crashPoint);
-        setTimeout(startRound, 3000);
-      }
-    }
-  }, 50);
-}
-
-function bet(betNum) {
-  if(!running) return alert('Wait for next round');
-  let amount = parseFloat(document.getElementById('bet'+betNum).value);
-  if(amount <= 0) return alert('Enter amount');
-  if(amount > balance) return alert('Not enough balance');
-  if(activeBets[betNum] > 0) return alert('Already bet');
-  
-  activeBets[betNum] = amount;
-  balance -= amount;
-  document.getElementById('balance').innerText = 'Balance: ' + balance.toFixed(2) + ' GHS';
-  document.getElementById('btn'+betNum).innerText = 'CASH OUT ' + multiplier.toFixed(2) + 'x';
-  document.getElementById('btn'+betNum).style.background = '#00C853';
-  document.getElementById('btn'+betNum).onclick = () => cashout(betNum);
-}
-
-function cashout(betNum) {
-  if(!running || activeBets[betNum] == 0) return;
-  let amount = activeBets[betNum];
-  let win = amount * multiplier;
-  balance += win;
-  activeBets[betNum] = 0;
-  document.getElementById('balance').innerText = 'Balance: ' + balance.toFixed(2) + ' GHS';
-  alert('Cashed out at ' + multiplier.toFixed(2) + 'x! Won ' + win.toFixed(2) + ' GHS');
-  document.getElementById('btn'+betNum).innerText = 'Bet';
-  document.getElementById('btn'+betNum).style.background = '#2979FF';
-  document.getElementById('btn'+betNum).onclick = () => bet(betNum);
-}
-
-function addHistory(crash) {
-  let history = document.getElementById('history');
-  let span = document.createElement('span');
-  span.innerText = crash + 'x';
-  span.style.color = crash > 2? '#00C853' : '#FF3D00';
-  history.prepend(span);
-}
-
+// Same working JS from before with fake coins
+let multiplier = 1.00; let running = false; let balance = 10000; let activeBets = {1:0, 2:0};
+function startRound() { multiplier=1.00; running=true; activeBets={1:0,2:0}; let crash=(Math.random()*9+1.01).toFixed(2); document.getElementById('multi').style.color='#00C853'; document.getElementById('multi').innerText='1.00x'; document.getElementById('btn1').innerText='Bet'; document.getElementById('btn2').innerText='Bet'; document.getElementById('btn1').style.background='#2979FF'; document.getElementById('btn2').style.background='#2979FF'; let int=setInterval(()=>{ if(running){ multiplier+=0.02; document.getElementById('multi').innerText=multiplier.toFixed(2)+'x'; if(multiplier>=crash){ running=false; clearInterval(int); document.getElementById('multi').innerText='CRASHED @ '+crash+'x'; document.getElementById('multi').style.color='#FF3D00'; setTimeout(startRound,3000);} } },50);}
+function bet(b){ if(!running) return alert('Wait for next round'); let amt=parseFloat(document.getElementById('bet'+b).value); if(amt<=0||amt>balance) return alert('Invalid'); activeBets[b]=amt; balance-=amt; document.getElementById('balance').innerText='Coins: '+balance.toFixed(2); document.getElementById('btn'+b).innerText='CASH OUT'; document.getElementById('btn'+b).style.background='#00C853'; document.getElementById('btn'+b).onclick=()=>cashout(b);}
+function cashout(b){ if(!running||activeBets[b]==0) return; let win=activeBets[b]*multiplier; balance+=win; activeBets[b]=0; document.getElementById('balance').innerText='Coins: '+balance.toFixed(2); alert('Won '+win.toFixed(2)+' Coins at '+multiplier.toFixed(2)+'x'); document.getElementById('btn'+b).innerText='Bet'; document.getElementById('btn'+b).style.background='#2979FF'; document.getElementById('btn'+b).onclick=()=>bet(b);}
 startRound();
 </script>
 </body>
