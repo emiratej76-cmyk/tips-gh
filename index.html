@@ -1,48 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Aviator Demo</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EMPIRE PREDICTION - Football Tips</title>
 <style>
-body { background:#0D1117; color:white; font-family:Arial; margin:0; }
-.header { display:flex; justify-content:space-between; padding:15px; background:#161B22; font-weight:bold; }
-.game-area { text-align:center; padding:50px; background:#1C2128; }
-.multi { font-size:60px; font-weight:bold; color:#00C853; }
-.panels { display:flex; gap:10px; padding:10px; }
-.bet-box { background:#161B22; padding:15px; border-radius:10px; flex:1; }
-.bet-box input { width:95%; padding:8px; margin:5px 0; background:#2A2E38; border:none; color:white; border-radius:5px; }
-.btn { width:100%; padding:12px; border:none; border-radius:5px; font-weight:bold; cursor:pointer; margin:3px 0; }
-.btn-bet { background:#2979FF; color:white; }
-.btn-cash { background:#00C853; color:white; }
+    * { margin:0; padding:0; box-sizing:border-box; font-family:Arial, sans-serif; }
+  body { background:#0a0a0a; color:#fff; }
+  header { background:linear-gradient(90deg,#FFD700,#FFA500); padding:20px; text-align:center; }
+  header h1 { color:#000; font-size:28px; font-weight:bold; }
+  header p { color:#000; font-size:14px; }
+  .container { max-width:600px; margin:20px auto; padding:10px; }
+  .tabs { display:flex; gap:10px; margin-bottom:20px; }
+  .tab { flex:1; padding:12px; background:#1a1a1a; border:2px solid #FFD700; color:#FFD700; border-radius:8px; text-align:center; font-weight:bold; }
+  .tab.active { background:#FFD700; color:#000; }
+  .match-card { background:#1a1a1a; border:1px solid #333; border-radius:10px; padding:15px; margin-bottom:15px; }
+  .match-teams { font-size:18px; font-weight:bold; margin-bottom:8px; }
+  .match-tip { color:#FFD700; font-size:16px; margin-bottom:5px; }
+  .match-odds { color:#00ff88; font-size:14px; }
+  .result { float:right; font-weight:bold; padding:4px 10px; border-radius:5px; font-size:12px; }
+  .win { background:#00ff88; color:#000; }
+  .loss { background:#ff4444; color:#fff; }
+  .pending { background:#555; color:#fff; }
+  .btn-whatsapp { display:block; width:100%; padding:15px; background:#25D366; color:#fff; text-align:center; border-radius:10px; font-size:18px; font-weight:bold; text-decoration:none; margin-top:20px; }
+  footer { text-align:center; padding:20px; color:#777; font-size:12px; }
 </style>
 </head>
 <body>
-<div class="header">
-  <div>AVIATOR DEMO</div>
-  <div id="balance">Coins: 10000.00</div>
-</div>
-<div class="game-area">
-  <div style="font-size:80px;">✈️</div>
-  <div class="multi" id="multi">1.00x</div>
-</div>
-<div class="panels">
-  <div class="bet-box">
-    <h4>Bet 1</h4>
-    <input type="number" value="10.00" id="bet1">
-    <button class="btn btn-bet" id="btn1" onclick="bet(1)">Bet</button>
+
+<header>
+  <h1>👑 EMPIRE PREDICTION</h1>
+  <p>King of Accurate Football Tips</p>
+</header>
+
+<div class="container">
+  <div class="tabs">
+    <div class="tab active">FREE TIPS</div>
+    <div class="tab">VIP TIPS</div>
   </div>
-  <div class="bet-box">
-    <h4>Bet 2</h4>
-    <input type="number" value="10.00" id="bet2">
-    <button class="btn btn-bet" id="btn2" onclick="bet(2)">Bet</button>
+
+  <!-- Match 1 -->
+  <div class="match-card">
+    <span class="result win">WIN</span>
+    <div class="match-teams">Manchester United vs Newcastle</div>
+    <div class="match-tip">Tip: Over 2.5 Goals</div>
+    <div class="match-odds">Odds: @1.72 | Result: 2-1</div>
   </div>
+
+  <!-- Match 2 -->
+  <div class="match-card">
+    <span class="result pending">PENDING</span>
+    <div class="match-teams">Real Madrid vs Valencia</div>
+    <div class="match-tip">Tip: Real Madrid Win</div>
+    <div class="match-odds">Odds: @1.45</div>
+  </div>
+
+  <!-- Match 3 -->
+  <div class="match-card">
+    <span class="result pending">PENDING</span>
+    <div class="match-teams">Juventus vs Bologna</div>
+    <div class="match-tip">Tip: BTTS Yes</div>
+    <div class="match-odds">Odds: @1.68</div>
+  </div>
+
+  <a class="btn-whatsapp" href="https://wa.me/233530946387?text=Hi%20EMPIRE%20PREDICTION,%20I%20want%20VIP%20tips" target="_blank">
+    📲 DM FOR VIP ON WHATSAPP
+  </a>
 </div>
-<script>
-// Same working JS from before with fake coins
-let multiplier = 1.00; let running = false; let balance = 10000; let activeBets = {1:0, 2:0};
-function startRound() { multiplier=1.00; running=true; activeBets={1:0,2:0}; let crash=(Math.random()*9+1.01).toFixed(2); document.getElementById('multi').style.color='#00C853'; document.getElementById('multi').innerText='1.00x'; document.getElementById('btn1').innerText='Bet'; document.getElementById('btn2').innerText='Bet'; document.getElementById('btn1').style.background='#2979FF'; document.getElementById('btn2').style.background='#2979FF'; let int=setInterval(()=>{ if(running){ multiplier+=0.02; document.getElementById('multi').innerText=multiplier.toFixed(2)+'x'; if(multiplier>=crash){ running=false; clearInterval(int); document.getElementById('multi').innerText='CRASHED @ '+crash+'x'; document.getElementById('multi').style.color='#FF3D00'; setTimeout(startRound,3000);} } },50);}
-function bet(b){ if(!running) return alert('Wait for next round'); let amt=parseFloat(document.getElementById('bet'+b).value); if(amt<=0||amt>balance) return alert('Invalid'); activeBets[b]=amt; balance-=amt; document.getElementById('balance').innerText='Coins: '+balance.toFixed(2); document.getElementById('btn'+b).innerText='CASH OUT'; document.getElementById('btn'+b).style.background='#00C853'; document.getElementById('btn'+b).onclick=()=>cashout(b);}
-function cashout(b){ if(!running||activeBets[b]==0) return; let win=activeBets[b]*multiplier; balance+=win; activeBets[b]=0; document.getElementById('balance').innerText='Coins: '+balance.toFixed(2); alert('Won '+win.toFixed(2)+' Coins at '+multiplier.toFixed(2)+'x'); document.getElementById('btn'+b).innerText='Bet'; document.getElementById('btn'+b).style.background='#2979FF'; document.getElementById('btn'+b).onclick=()=>bet(b);}
-startRound();
-</script>
+
+<footer>
+  © 2026 EMPIRE PREDICTION. 18+ Gamble Responsibly.
+</footer>
+
 </body>
 </html>
