@@ -6,7 +6,7 @@
 <title>Aviator Pro</title>
 <style>
   body { background:#0F1218; color:white; font-family: Arial; margin:0; padding:0; }
- .header { background:#1A1D23; padding:12px; text-align:center; font-size:20px; font-weight:bold; color:#FF3D00; }
+ .header { background:#1A1D23; padding:12px 20px; display:flex; justify-content:space-between; align-items:center; font-weight:bold; }
  .game-area { background:#12151C; height:300px; display:flex; align-items:center; justify-content:center; font-size:40px; border-bottom:2px solid #2A2E38; }
  .multi { color:#00C853; }
  .panels { display:flex; gap:10px; padding:10px; }
@@ -22,7 +22,10 @@
 </head>
 <body>
 
-<div class="header">AVIATOR PRO</div>
+<div class="header">
+  <div>AVIATOR PRO</div>
+  <div>Balance: 10,000.00 GHS</div>
+</div>
 
 <div class="game-area">
   <div>✈️ <span class="multi" id="multi">1.00x</span></div>
