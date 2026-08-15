@@ -12,17 +12,21 @@
   header p { color:#000; font-size:14px; }
  .stats { background:#1a1a1a; padding:15px; text-align:center; border-bottom:2px solid #FFD700; }
  .stats h2 { color:#FFD700; font-size:20px; }
+ .section-title { color:#FFD700; font-size:18px; font-weight:bold; margin:20px 0 10px 0; padding-left:5px; border-left:3px solid #FFD700; }
  .container { max-width:600px; margin:20px auto; padding:10px; }
  .tabs { display:flex; gap:10px; margin-bottom:20px; }
  .tab { flex:1; padding:12px; background:#1a1a1a; border:2px solid #FFD700; color:#FFD700; border-radius:8px; text-align:center; font-weight:bold; }
  .tab.active { background:#FFD700; color:#000; }
  .match-card { background:#1a1a1a; border:1px solid #333; border-radius:10px; padding:15px; margin-bottom:15px; }
+ .match-date { color:#888; font-size:12px; margin-bottom:5px; }
  .match-teams { font-size:18px; font-weight:bold; margin-bottom:8px; }
  .match-tip { color:#FFD700; font-size:16px; margin-bottom:5px; }
  .match-odds { color:#00ff88; font-size:14px; }
  .result { float:right; font-weight:bold; padding:4px 10px; border-radius:5px; font-size:12px; }
  .win { background:#00ff88; color:#000; }
  .loss { background:#ff4444; color:#fff; }
+ .live { background:#ff0000; color:#fff; animation:blink 1s infinite; }
+ @keyframes blink { 50% { opacity:0.5; } }
  .pending { background:#555; color:#fff; }
  .btn-whatsapp { display:block; width:100%; padding:15px; background:#25D366; color:#fff; text-align:center; border-radius:10px; font-size:18px; font-weight:bold; text-decoration:none; margin-top:20px; }
   footer { text-align:center; padding:20px; color:#777; font-size:12px; }
@@ -45,9 +49,32 @@
     <div class="tab">VIP TIPS</div>
   </div>
 
+  <div class="section-title">🔴 LIVE TODAY - AUG 15, 2026</div>
+  
+  <!-- LIVE MATCH 1 -->
+  <div class="match-card">
+    <span class="result live">LIVE</span>
+    <div class="match-date">Premier League | 16:30 GMT+4</div>
+    <div class="match-teams">Arsenal vs Chelsea</div>
+    <div class="match-tip">Tip: Over 2.5 Goals</div>
+    <div class="match-odds">Odds: @1.80</div>
+  </div>
+
+  <!-- LIVE MATCH 2 -->
+  <div class="match-card">
+    <span class="result live">LIVE</span>
+    <div class="match-date">LaLiga | 19:00 GMT+4</div>
+    <div class="match-teams">Barcelona vs Atletico Madrid</div>
+    <div class="match-tip">Tip: BTTS Yes</div>
+    <div class="match-odds">Odds: @1.65</div>
+  </div>
+
+  <div class="section-title">RECENT RESULTS</div>
+
   <!-- Match 1 -->
   <div class="match-card">
     <span class="result win">WIN</span>
+    <div class="match-date">Feb 9, 2026</div>
     <div class="match-teams">Manchester United vs Newcastle</div>
     <div class="match-tip">Tip: Over 2.5 Goals</div>
     <div class="match-odds">Odds: @1.72 | Result: 2-1</div>
@@ -56,6 +83,7 @@
   <!-- Match 2 -->
   <div class="match-card">
     <span class="result win">WIN</span>
+    <div class="match-date">Feb 9, 2026</div>
     <div class="match-teams">Real Madrid vs Valencia</div>
     <div class="match-tip">Tip: Real Madrid Win</div>
     <div class="match-odds">Odds: @1.45 | Result: 0-2</div>
@@ -64,6 +92,7 @@
   <!-- Match 3 -->
   <div class="match-card">
     <span class="result loss">LOSS</span>
+    <div class="match-date">Apr 19, 2026</div>
     <div class="match-teams">Juventus vs Bologna</div>
     <div class="match-tip">Tip: BTTS Yes</div>
     <div class="match-odds">Odds: @1.68 | Result: 2-0</div>
