@@ -1,108 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EMPIRE PREDICTION - King of Accurate Football Tips</title>
+<style>
+    * { margin:0!important; padding:0!important; box-sizing:border-box!important; font-family:Arial, sans-serif!important; }
+  body { background:#0a0a0a!important; color:#fff!important; }
+  header { background:linear-gradient(90deg,#FFD700,#FFA500)!important; padding:20px!important; text-align:center!important; }
+  header h1 { color:#000!important; font-size:28px!important; font-weight:bold!important; }
+  header p { color:#000!important; font-size:14px!important; }
+.stats { background:#1a1a1a!important; padding:15px!important; text-align:center!important; border-bottom:2px solid #FFD700!important; }
+.stats h2 { color:#FFD700!important; font-size:20px!important; }
+.section-title { color:#FFD700!important; font-size:18px!important; font-weight:bold!important; margin:20px 0 10px 0!important; padding-left:5px!important; border-left:3px solid #FFD700!important; }
+.container { max-width:600px!important; margin:20px auto!important; padding:10px!important; }
+.tabs { display:flex!important; gap:10px!important; margin-bottom:20px!important; }
+.tab { flex:1!important; padding:12px!important; background:#1a1a1a!important; border:2px solid #FFD700!important; color:#FFD700!important; border-radius:8px!important; text-align:center!important; font-weight:bold!important; cursor:pointer!important; }
+.tab.active { background:#FFD700!important; color:#000!important; }
+.tab-content { display:none!important; }
+.tab-content.active { display:block!important; }
+.match-card { background:#1a1a1a!important; border:1px solid #333!important; border-radius:10px!important; padding:15px!important; margin-bottom:15px!important; }
+.match-date { color:#888!important; font-size:12px!important; margin-bottom:5px!important; }
+.match-teams { font-size:18px!important; font-weight:bold!important; margin-bottom:8px!important; }
+.match-tip { color:#FFD700!important; font-size:16px!important; margin-bottom:5px!important; }
+.match-odds { color:#00ff88!important; font-size:14px!important; }
+.result { float:right!important; font-weight:bold!important; padding:4px 10px!important; border-radius:5px!important; font-size:12px!important; }
+.win { background:#00ff88!important; color:#000!important; }
+.loss { background:#ff4444!important; color:#fff!important; }
+.live { background:#ff0000!important; color:#fff!important; animation:blink 1s infinite!important; }
+ @keyframes blink { 50% { opacity:0.5!important; } }
+.vip-plan { background:linear-gradient(135deg,#FFD700,#FFA500)!important; color:#000!important; border-radius:10px!important; padding:20px!important; margin-bottom:15px!important; text-align:center!important; }
+.vip-plan h3 { font-size:22px!important; margin-bottom:10px!important; }
+.vip-price { font-size:32px!important; font-weight:bold!important; margin:10px 0!important; }
+.btn-pay { display:block!important; width:100%!important; padding:15px!important; background:#000!important; color:#FFD700!important; text-align:center!important; border-radius:10px!important; font-size:18px!important; font-weight:bold!important; text-decoration:none!important; margin-top:10px!important; }
+  footer { text-align:center!important; padding:20px!important; color:#777!important; font-size:12px!important; }
+</style>
+<script>
+function openTab(evt, tabName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tab-content");
+  for (i = 0; i < tabcontent.length; i++) { tabcontent[i].classList.remove("active"); }
+  tablinks = document.getElementsByClassName("tab");
+  for (i = 0; i < tablinks.length; i++) { tablinks[i].classList.remove("active"); }
+  document.getElementById(tabName).classList.add("active");
+  evt.currentTarget.classList.add("active");
+}
+</script>
+</head>
 <body>
-
-<header>
-  <h1>👑 EMPIRE PREDICTION</h1>
-  <p>King of Accurate Football Tips</p>
-</header>
-
-<div class="stats">
-  <h2>LAST 3: 2W - 1L | WIN RATE: 66.6%</h2>
-</div>
-
+<header><h1>👑 EMPIRE PREDICTION</h1><p>King of Accurate Football Tips</p></header>
+<div class="stats"><h2>LAST 3: 2W - 1L | WIN RATE: 66.6%</h2></div>
 <div class="container">
   <div class="tabs">
     <div class="tab active" onclick="openTab(event, 'free')">FREE TIPS</div>
     <div class="tab" onclick="openTab(event, 'vip')">VIP TIPS</div>
   </div>
-
-  <!-- FREE TIPS TAB -->
   <div id="free" class="tab-content active">
     <div class="section-title">🔴 LIVE TODAY - AUG 15, 2026</div>
-
-    <div class="match-card">
-      <span class="result live">LIVE</span>
-      <div class="match-date">Premier League | 16:30 GMT+4</div>
-      <div class="match-teams">Arsenal vs Chelsea</div>
-      <div class="match-tip">Tip: Over 2.5 Goals</div>
-      <div class="match-odds">Odds: @1.80</div>
-    </div>
-
-    <div class="match-card">
-      <span class="result live">LIVE</span>
-      <div class="match-date">LaLiga | 19:00 GMT+4</div>
-      <div class="match-teams">Barcelona vs Atletico Madrid</div>
-      <div class="match-tip">Tip: BTTS Yes</div>
-      <div class="match-odds">Odds: @1.65</div>
-    </div>
-
-    <div class="match-card">
-      <span class="result live">LIVE</span>
-      <div class="match-date">Bundesliga | 21:30 GMT+4</div>
-      <div class="match-teams">Bayern Munich vs Dortmund</div>
-      <div class="match-tip">Tip: Bayern Win</div>
-      <div class="match-odds">Odds: @1.55</div>
-    </div>
-
-    <div class="section-title">RECENT RESULTS</div>
-    <div class="match-card">
-      <span class="result win">WIN</span>
-      <div class="match-date">Feb 9, 2026</div>
-      <div class="match-teams">Man United vs Newcastle</div>
-      <div class="match-tip">Tip: Over 2.5 Goals</div>
-      <div class="match-odds">Odds: @1.72 | Result: 2-1</div>
-    </div>
+    <div class="match-card"><span class="result live">LIVE</span><div class="match-date">Premier League | 16:30 GMT+4</div><div class="match-teams">Arsenal vs Chelsea</div><div class="match-tip">Tip: Over 2.5 Goals</div><div class="match-odds">Odds: @1.80</div></div>
   </div>
-
-  <!-- VIP TIPS TAB -->
   <div id="vip" class="tab-content">
     <div class="section-title">👑 JOIN EMPIRE VIP</div>
-
-    <div class="vip-plan">
-      <h3>WEEKLY VIP</h3>
-      <div class="vip-price">$25</div>
-      <div class="vip-features">
-        ✅ 3-5 Sure Games Daily<br>
-        ✅ 90%+ Win Rate Tips<br>
-        ✅ Live Updates on WhatsApp<br>
-        ✅ 24/7 Support
-      </div>
-      <a href="https://wa.me/233530946387?text=Hi%20EMPIRE%20PREDICTION,%20I%20want%20WEEKLY%20VIP%20for%20$25" class="btn-pay">PAY NOW VIA WHATSAPP</a>
-    </div>
-
-    <div class="vip-plan">
-      <h3>MONTHLY VIP</h3>
-      <div class="vip-price">$70</div>
-      <div class="vip-features">
-        ✅ Everything in Weekly<br>
-        ✅ Save $30<br>
-        ✅ Bonus: Weekend Accumulator<br>
-        ✅ Priority VIP Access
-      </div>
-      <a href="https://wa.me/233530946387?text=Hi%20EMPIRE%20PREDICTION,%20I%20want%20MONTHLY%20VIP%20for%20$70" class="btn-pay">PAY NOW VIA WHATSAPP</a>
-    </div>
-
-    <div class="vip-plan">
-      <h3>DAILY VIP</h3>
-      <div class="vip-price">$10</div>
-      <div class="vip-features">
-        ✅ 2 Sure Games Today<br>
-        ✅ Fast Delivery<br>
-        ✅ Perfect for Trial
-      </div>
-      <a href="https://wa.me/233530946387?text=Hi%20EMPIRE%20PREDICTION,%20I%20want%20DAILY%20VIP%20for%20$10" class="btn-pay">PAY NOW VIA WHATSAPP</a>
-    </div>
-
-    <p style="text-align:center; color:#888; font-size:12px; margin-top:10px;">Payment: MTN, Vodafone, Bank Transfer. Contact on WhatsApp after payment</p>
+    <div class="vip-plan"><h3>DAILY VIP</h3><div class="vip-price">$3</div><a href="https://wa.me/233XXXXXXXXX?text=DAILY%20VIP%20$3" class="btn-pay">PAY NOW VIA WHATSAPP</a></div>
+    <div class="vip-plan"><h3>WEEKLY VIP</h3><div class="vip-price">$10</div><a href="https://wa.me/233XXXXXXXXX?text=WEEKLY%20VIP%20$10" class="btn-pay">PAY NOW VIA WHATSAPP</a></div>
   </div>
-
-  <a class="btn-whatsapp" href="https://wa.me/233530946387?text=Hi%20EMPIRE%20PREDICTION" target="_blank">
-    📲 CHAT US ON WHATSAPP
-  </a>
 </div>
-
-<footer>
-  © 2026 EMPIRE PREDICTION. 18+ Gamble Responsibly.
-</footer>
-
-</body>
-</html>
+<footer>© 2026 EMPIRE PREDICTION. 18+ Gamble Responsibly.</footer>
+</body></html>
