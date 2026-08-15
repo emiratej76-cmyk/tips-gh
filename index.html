@@ -10,27 +10,45 @@
   header { background:linear-gradient(90deg,#FFD700,#FFA500); padding:20px; text-align:center; }
   header h1 { color:#000; font-size:28px; font-weight:bold; }
   header p { color:#000; font-size:14px; }
- .stats { background:#1a1a1a; padding:15px; text-align:center; border-bottom:2px solid #FFD700; }
- .stats h2 { color:#FFD700; font-size:20px; }
- .section-title { color:#FFD700; font-size:18px; font-weight:bold; margin:20px 0 10px 0; padding-left:5px; border-left:3px solid #FFD700; }
- .container { max-width:600px; margin:20px auto; padding:10px; }
- .tabs { display:flex; gap:10px; margin-bottom:20px; }
- .tab { flex:1; padding:12px; background:#1a1a1a; border:2px solid #FFD700; color:#FFD700; border-radius:8px; text-align:center; font-weight:bold; }
- .tab.active { background:#FFD700; color:#000; }
- .match-card { background:#1a1a1a; border:1px solid #333; border-radius:10px; padding:15px; margin-bottom:15px; }
- .match-date { color:#888; font-size:12px; margin-bottom:5px; }
- .match-teams { font-size:18px; font-weight:bold; margin-bottom:8px; }
- .match-tip { color:#FFD700; font-size:16px; margin-bottom:5px; }
- .match-odds { color:#00ff88; font-size:14px; }
- .result { float:right; font-weight:bold; padding:4px 10px; border-radius:5px; font-size:12px; }
- .win { background:#00ff88; color:#000; }
- .loss { background:#ff4444; color:#fff; }
- .live { background:#ff0000; color:#fff; animation:blink 1s infinite; }
+.stats { background:#1a1a1a; padding:15px; text-align:center; border-bottom:2px solid #FFD700; }
+.stats h2 { color:#FFD700; font-size:20px; }
+.section-title { color:#FFD700; font-size:18px; font-weight:bold; margin:20px 0 10px 0; padding-left:5px; border-left:3px solid #FFD700; }
+.container { max-width:600px; margin:20px auto; padding:10px; }
+.tabs { display:flex; gap:10px; margin-bottom:20px; }
+.tab { flex:1; padding:12px; background:#1a1a1a; border:2px solid #FFD700; color:#FFD700; border-radius:8px; text-align:center; font-weight:bold; cursor:pointer; }
+.tab.active { background:#FFD700; color:#000; }
+.tab-content { display:none; }
+.tab-content.active { display:block; }
+.match-card { background:#1a1a1a; border:1px solid #333; border-radius:10px; padding:15px; margin-bottom:15px; }
+.match-date { color:#888; font-size:12px; margin-bottom:5px; }
+.match-teams { font-size:18px; font-weight:bold; margin-bottom:8px; }
+.match-tip { color:#FFD700; font-size:16px; margin-bottom:5px; }
+.match-odds { color:#00ff88; font-size:14px; }
+.result { float:right; font-weight:bold; padding:4px 10px; border-radius:5px; font-size:12px; }
+.win { background:#00ff88; color:#000; }
+.loss { background:#ff4444; color:#fff; }
+.live { background:#ff0000; color:#fff; animation:blink 1s infinite; }
  @keyframes blink { 50% { opacity:0.5; } }
- .pending { background:#FFA500; color:#000; }
- .btn-whatsapp { display:block; width:100%; padding:15px; background:#25D366; color:#fff; text-align:center; border-radius:10px; font-size:18px; font-weight:bold; text-decoration:none; margin-top:20px; }
+.pending { background:#FFA500; color:#000; }
+.vip-plan { background:linear-gradient(135deg,#FFD700,#FFA500); color:#000; border-radius:10px; padding:20px; margin-bottom:15px; text-align:center; }
+.vip-plan h3 { font-size:22px; margin-bottom:10px; }
+.vip-price { font-size:32px; font-weight:bold; margin:10px 0; }
+.vip-features { text-align:left; margin:15px 0; line-height:1.8; }
+.btn-pay { display:block; width:100%; padding:15px; background:#000; color:#FFD700; text-align:center; border-radius:10px; font-size:18px; font-weight:bold; text-decoration:none; margin-top:10px; }
+.btn-whatsapp { display:block; width:100%; padding:15px; background:#25D366; color:#fff; text-align:center; border-radius:10px; font-size:18px; font-weight:bold; text-decoration:none; margin-top:20px; }
   footer { text-align:center; padding:20px; color:#777; font-size:12px; }
 </style>
+<script>
+function openTab(evt, tabName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tab-content");
+  for (i = 0; i < tabcontent.length; i++) { tabcontent[i].classList.remove("active"); }
+  tablinks = document.getElementsByClassName("tab");
+  for (i = 0; i < tablinks.length; i++) { tablinks[i].classList.remove("active"); }
+  document.getElementById(tabName).classList.add("active");
+  evt.currentTarget.classList.add("active");
+}
+</script>
 </head>
 <body>
 
@@ -45,90 +63,92 @@
 
 <div class="container">
   <div class="tabs">
-    <div class="tab active">FREE TIPS</div>
-    <div class="tab">VIP TIPS</div>
+    <div class="tab active" onclick="openTab(event, 'free')">FREE TIPS</div>
+    <div class="tab" onclick="openTab(event, 'vip')">VIP TIPS</div>
   </div>
 
-  <div class="section-title">🔴 LIVE TODAY - AUG 15, 2026</div>
-  
-  <!-- LIVE MATCH 1 -->
-  <div class="match-card">
-    <span class="result live">LIVE</span>
-    <div class="match-date">Premier League | 16:30 GMT+4</div>
-    <div class="match-teams">Arsenal vs Chelsea</div>
-    <div class="match-tip">Tip: Over 2.5 Goals</div>
-    <div class="match-odds">Odds: @1.80</div>
+  <!-- FREE TIPS TAB -->
+  <div id="free" class="tab-content active">
+    <div class="section-title">🔴 LIVE TODAY - AUG 15, 2026</div>
+
+    <div class="match-card">
+      <span class="result live">LIVE</span>
+      <div class="match-date">Premier League | 16:30 GMT+4</div>
+      <div class="match-teams">Arsenal vs Chelsea</div>
+      <div class="match-tip">Tip: Over 2.5 Goals</div>
+      <div class="match-odds">Odds: @1.80</div>
+    </div>
+
+    <div class="match-card">
+      <span class="result live">LIVE</span>
+      <div class="match-date">LaLiga | 19:00 GMT+4</div>
+      <div class="match-teams">Barcelona vs Atletico Madrid</div>
+      <div class="match-tip">Tip: BTTS Yes</div>
+      <div class="match-odds">Odds: @1.65</div>
+    </div>
+
+    <div class="match-card">
+      <span class="result live">LIVE</span>
+      <div class="match-date">Bundesliga | 21:30 GMT+4</div>
+      <div class="match-teams">Bayern Munich vs Dortmund</div>
+      <div class="match-tip">Tip: Bayern Win</div>
+      <div class="match-odds">Odds: @1.55</div>
+    </div>
+
+    <div class="section-title">RECENT RESULTS</div>
+    <div class="match-card">
+      <span class="result win">WIN</span>
+      <div class="match-date">Feb 9, 2026</div>
+      <div class="match-teams">Man United vs Newcastle</div>
+      <div class="match-tip">Tip: Over 2.5 Goals</div>
+      <div class="match-odds">Odds: @1.72 | Result: 2-1</div>
+    </div>
   </div>
 
-  <!-- LIVE MATCH 2 -->
-  <div class="match-card">
-    <span class="result live">LIVE</span>
-    <div class="match-date">LaLiga | 19:00 GMT+4</div>
-    <div class="match-teams">Barcelona vs Atletico Madrid</div>
-    <div class="match-tip">Tip: BTTS Yes</div>
-    <div class="match-odds">Odds: @1.65</div>
+  <!-- VIP TIPS TAB -->
+  <div id="vip" class="tab-content">
+    <div class="section-title">👑 JOIN EMPIRE VIP</div>
+
+    <div class="vip-plan">
+      <h3>WEEKLY VIP</h3>
+      <div class="vip-price">$25</div>
+      <div class="vip-features">
+        ✅ 3-5 Sure Games Daily<br>
+        ✅ 90%+ Win Rate Tips<br>
+        ✅ Live Updates on WhatsApp<br>
+        ✅ 24/7 Support
+      </div>
+      <a href="https://wa.me/233530946387?text=Hi%20EMPIRE%20PREDICTION,%20I%20want%20WEEKLY%20VIP%20for%20$25" class="btn-pay">PAY NOW VIA WHATSAPP</a>
+    </div>
+
+    <div class="vip-plan">
+      <h3>MONTHLY VIP</h3>
+      <div class="vip-price">$70</div>
+      <div class="vip-features">
+        ✅ Everything in Weekly<br>
+        ✅ Save $30<br>
+        ✅ Bonus: Weekend Accumulator<br>
+        ✅ Priority VIP Access
+      </div>
+      <a href="https://wa.me/233XXXXXXXXX?text=Hi%20EMPIRE%20PREDICTION,%20I%20want%20MONTHLY%20VIP%20for%20$70" class="btn-pay">PAY NOW VIA WHATSAPP</a>
+    </div>
+
+    <div class="vip-plan">
+      <h3>DAILY VIP</h3>
+      <div class="vip-price">$10</div>
+      <div class="vip-features">
+        ✅ 2 Sure Games Today<br>
+        ✅ Fast Delivery<br>
+        ✅ Perfect for Trial
+      </div>
+      <a href="https://wa.me/233XXXXXXXXX?text=Hi%20EMPIRE%20PREDICTION,%20I%20want%20DAILY%20VIP%20for%20$10" class="btn-pay">PAY NOW VIA WHATSAPP</a>
+    </div>
+
+    <p style="text-align:center; color:#888; font-size:12px; margin-top:10px;">Payment: MTN, Vodafone, Bank Transfer. Contact on WhatsApp after payment</p>
   </div>
 
-  <!-- LIVE MATCH 3 -->
-  <div class="match-card">
-    <span class="result live">LIVE</span>
-    <div class="match-date">Bundesliga | 21:30 GMT+4</div>
-    <div class="match-teams">Bayern Munich vs Dortmund</div>
-    <div class="match-tip">Tip: Bayern Win</div>
-    <div class="match-odds">Odds: @1.55</div>
-  </div>
-
-  <div class="section-title">📅 TOMORROW'S TIPS - AUG 16, 2026</div>
-
-  <!-- TOMORROW MATCH 1 -->
-  <div class="match-card">
-    <span class="result pending">PENDING</span>
-    <div class="match-date">Serie A | 17:00 GMT+4</div>
-    <div class="match-teams">AC Milan vs Inter Milan</div>
-    <div class="match-tip">Tip: Over 2.5 Goals</div>
-    <div class="match-odds">Odds: @1.75</div>
-  </div>
-
-  <!-- TOMORROW MATCH 2 -->
-  <div class="match-card">
-    <span class="result pending">PENDING</span>
-    <div class="match-date">EPL | 20:30 GMT+4</div>
-    <div class="match-teams">Man City vs Liverpool</div>
-    <div class="match-tip">Tip: BTTS Yes</div>
-    <div class="match-odds">Odds: @1.60</div>
-  </div>
-
-  <div class="section-title">RECENT RESULTS</div>
-
-  <!-- Match 1 -->
-  <div class="match-card">
-    <span class="result win">WIN</span>
-    <div class="match-date">Feb 9, 2026</div>
-    <div class="match-teams">Manchester United vs Newcastle</div>
-    <div class="match-tip">Tip: Over 2.5 Goals</div>
-    <div class="match-odds">Odds: @1.72 | Result: 2-1</div>
-  </div>
-
-  <!-- Match 2 -->
-  <div class="match-card">
-    <span class="result win">WIN</span>
-    <div class="match-date">Feb 9, 2026</div>
-    <div class="match-teams">Real Madrid vs Valencia</div>
-    <div class="match-tip">Tip: Real Madrid Win</div>
-    <div class="match-odds">Odds: @1.45 | Result: 0-2</div>
-  </div>
-
-  <!-- Match 3 -->
-  <div class="match-card">
-    <span class="result loss">LOSS</span>
-    <div class="match-date">Apr 19, 2026</div>
-    <div class="match-teams">Juventus vs Bologna</div>
-    <div class="match-tip">Tip: BTTS Yes</div>
-    <div class="match-odds">Odds: @1.68 | Result: 2-0</div>
-  </div>
-
-  <a class="btn-whatsapp" href="https://wa.me/233530946387?text=Hi%20EMPIRE%20PREDICTION,%20I%20want%20to%20join%20VIP" target="_blank">
-    📲 DM FOR VIP ON WHATSAPP
+  <a class="btn-whatsapp" href="https://wa.me/233XXXXXXXXX?text=Hi%20EMPIRE%20PREDICTION" target="_blank">
+    📲 CHAT US ON WHATSAPP
   </a>
 </div>
 
