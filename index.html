@@ -28,7 +28,10 @@
 </div>
 
 <div class="game-area">
-  <div>✈️ <span class="multi" id="multi">1.00x</span></div>
+  <div style="display:flex; align-items:center; gap:10px;">
+  <img src="https://i.imgur.com/8Km8H7L.png" width="50" style="transform: rotate(-30deg);">
+  <span class="multi" id="multi">1.00x</span>
+</div>
 </div>
 
 <div class="history" id="history"></div>
@@ -110,7 +113,110 @@ function addPlayer(){
   let players = document.getElementById('players');
   players.prepend(div);
   if(players.children.length > 15) players.removeChild(players.lastChild);
+}let multiplier = 1.00;
+let running = false;
+let crashPoint = 1.50;
+
+function startRound() {
+  multiplier = 1.00;
+  running = true;
+  crashPoint = (Math.random() * 9 + 1.01).toFixed(2); // Crash between 1.01x - 10x
+  document.getElementById('multi').style.color = '#00C853';
+  
+  let interval = setInterval(() => {
+    if(running) {
+      multiplier += 0.02;
+      document.getElementById('multi').innerText = multiplier.toFixed(2) + 'x';
+      
+      if(multiplier > 2) document.getElementById('multi').style.color = '#FFD600';
+      if(multiplier > 5) document.getElementById('multi').style.color = '#FF3D00';
+      
+      if(multiplier >= crashPoint) {
+        running = false;
+        clearInterval(interval);
+        addHistory(crashPoint);
+        setTimeout(startRound, 4000); // 4s between rounds
+      }
+    }
+  }, 50);
+}141   }, 50);
+142 }  ← this is the end of startRound
+143 
+// CASHOUT FUNCTION
+function cashout(betNum, amount) {
+  if(!running) return alert('Round already crashed');
+  let win = (amount * multiplier).toFixed(2);
+  balance += parseFloat(win) - amount;
+  document.getElementById('balance').innerText = 'Balance: ' + balance.toFixed(2) + ' GHS';
+  alert('Cashed out at ' + multiplier.toFixed(2) + 'x! Won ' + win + ' GHS');
+  document.getElementById('btn'+betNum).innerText = 'Bet';
+  document.getElementById('btn'+betNum).style.background = '#2979FF';
+  document.getElementById('btn'+betNum).onclick = () => bet(betNum);
 }
+
+// MOVE THE PLANE
+function movePlane() {
+  let plane = document.getElementById('plane');
+  let x = 50;
+  let y = 250;
+  let interval = setInterval(() => {
+    if(running) {
+      x += 2;
+      y -= multiplier * 2;
+      plane.style.left = x + 'px';
+      plane.style.bottom = y + 'px';
+    } else {
+      clearInterval(interval);
+      plane.style.left = '50px';
+      plane.style.bottom = '250px';
+      movePlane();
+    }
+  }, 50);
+}
+
+movePlane();
+144 function cashout(betNum, amount) {  ← PASTE HERE
+145   if(!running) return alert('Round already crashed');
+...
+
+function bet(betNum) {
+  if(!running) return alert('Wait for next round');
+  let amount = document.getElementById('bet'+betNum).value;
+  if(amount <= 0) return alert('Enter amount');
+  document.getElementById('btn'+betNum).innerText = 'CASH OUT ' + multiplier.toFixed(2) + 'x';
+  document.getElementById('btn'+betNum).style.background = '#FF3D00';
+}
+
+function cashout(betNum) {
+  if(!running) return;
+  let amount = document.getElementById('bet'+betNum).value;
+  let win = (amount * multiplier).toFixed(2);
+  alert('Cashed out! Won ' + win + ' GHS at ' + multiplier.toFixed(2) + 'x');
+  document.getElementById('btn'+betNum).innerText = 'Bet';
+  document.getElementById('btn'+betNum).style.background = '#2979FF';
+}
+
+function addPlayer(name, bet, cash) {
+  let div = document.createElement('div');
+  div.style = "display:flex; justify-content:space-between; padding:5px;";
+  div.innerHTML = `<span>${name}</span><span>${bet} GHS</span><span style="color:#00C853">${cash}x</span>`;
+  let players = document.getElementById('players');
+  players.prepend(div);
+  if(players.children.length > 10) players.removeChild(players.lastChild);
+}
+
+function addHistory(crash) {
+  let history = document.getElementById('history');
+  let span = document.createElement('span');
+  span.innerText = crash + 'x';
+  span.style = "background:#2A2E38; padding:4px 8px; border-radius:5px; color:" + (crash > 2 ? '#00C853' : '#FF3D00');
+  history.prepend(span);
+}
+
+setInterval(() => addPlayer('Player'+Math.floor(Math.random()*1000), 10, (Math.random()*5+1).toFixed(2)), 2000);
+for(let i=0; i<5; i++) addPlayer('Player'+i, 10, (Math.random()*3+1).toFixed(2));
+
+startRound();
 setInterval(addPlayer, 1500);
 for(let i=0; i<8; i++) addPlayer();
 
