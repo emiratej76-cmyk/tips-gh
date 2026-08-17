@@ -3,155 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SportyBet Booking Code - 8YDK3Y1</title>
+<title>FREE BETHUB - SportyBet</title>
 <style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #111;
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-  }
-  .betslip {
-    background: #1a1a1a;
-    color: #fff;
-    width: 100%;
-    max-width: 400px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 0 15px rgba(255,0,0,0.3);
-  }
-  .header {
-    background: #e10600;
-    padding: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: bold;
-  }
-  .header img { width: 20px; vertical-align: middle; }
-  .booking {
-    text-align: center;
-    padding: 15px;
-  }
-  .booking h3 { margin: 0; font-size: 14px; color: #ccc; }
-  .booking h1 { margin: 5px 0; font-size: 36px; color: #00ff00; letter-spacing: 2px; }
-  .odds-box {
-    background: #222;
-    margin: 10px 20px;
-    padding: 10px;
-    border-radius: 8px;
-    display: flex;
-    justify-content: space-between;
-  }
-  .section {
-    background: #f1f1f1;
-    color: #000;
-    padding: 8px 15px;
-    font-weight: bold;
-  }
-  .bet-row {
-    background: #fff;
-    color: #000;
-    padding: 12px 15px;
-    border-bottom: 1px solid #ddd;
-  }
-  .bet-row .top {
-    display: flex;
-    justify-content: space-between;
-    font-weight: bold;
-    font-size: 16px;
-  }
+  body { font-family: Arial, sans-serif; background: #000; display: flex; justify-content: center; padding: 20px; }
+  .free-badge { background: #00ff00; color: #000; text-align: center; padding: 5px; font-weight: 900; font-size: 12px; letter-spacing: 2px; }
+  .betslip { background: #1a1a1a; color: #fff; width: 100%; max-width: 420px; border-radius: 12px; overflow: hidden; box-shadow: 0 0 20px rgba(0,255,0,0.3); border: 2px solid #00ff00; }
+  .header { background: #00ff00; color: #000; padding: 12px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; font-size: 14px; }
+  .booking { text-align: center; padding: 15px; }
+  .booking h3 { margin: 0; font-size: 14px; color: #00ff00; }
+  .code-wrap { display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 5px; }
+  .booking h1 { margin: 0; font-size: 36px; color: #fff; letter-spacing: 2px; }
+  .copy-btn { background: #00ff00; border: 1px solid #00ff00; color: #000; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: bold; }
+  .odds-box { background: #222; margin: 10px 20px; padding: 10px; border-radius: 8px; display: flex; justify-content: space-between; }
+  .section { background: #00ff00; color: #000; padding: 8px 15px; font-weight: bold; }
+  .bet-row { background: #fff; color: #000; padding: 12px 15px; border-bottom: 1px solid #ddd; }
+  .bet-row .top { display: flex; justify-content: space-between; font-weight: bold; font-size: 16px; }
   .bet-row .teams { font-size: 14px; margin-top: 3px; }
-  .bet-row .market { font-weight: bold; font-size: 13px; }
-  .example {
-    background: #fff;
-    color: #000;
-    padding: 12px 15px;
-  }
-  .example div { display: flex; justify-content: space-between; margin: 5px 0; }
-  .load-btn {
-    display: block;
-    background: #e10600;
-    color: #fff;
-    text-align: center;
-    padding: 15px;
-    font-size: 18px;
-    font-weight: bold;
-    text-decoration: none;
-    margin: 15px;
-    border-radius: 8px;
-  }
-  .load-btn:hover { background: #b30000; }
-  .disclaimer {
-    font-size: 11px;
-    color: #aaa;
-    text-align: center;
-    padding: 10px;
-  }
+  .bet-row .market { font-weight: bold; font-size: 13px; color: #e10600; }
+  .load-btn { display: block; background: #00ff00; color: #000; text-align: center; padding: 15px; font-size: 18px; font-weight: bold; text-decoration: none; margin: 15px; border-radius: 8px; }
+  .vip-btn { display: block; background: gold; color: #000; text-align: center; padding: 15px; font-size: 16px; font-weight: bold; text-decoration: none; margin: 0 15px 15px 15px; border-radius: 8px; }
+  .disclaimer { font-size: 11px; color: #aaa; text-align: center; padding: 10px; }
+  .toast { visibility: hidden; background: #00ff00; color: #000; text-align: center; border-radius: 5px; padding: 8px; position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); font-weight: bold; }
+  .toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 1.5s; }
+  @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+  @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
 </style>
 </head>
 <body>
-
 <div class="betslip">
+  <div class="free-badge">★ FREE DAILY TIPS ★</div>
   <div class="header">
-    <span>🏆 SportyBet <img src="https://flagcdn.com/16x12/gh.png" alt="Ghana"> Ghana</span>
-    <span>17/08/2026 19:44</span>
+    <span>🏆 SportyBet 🇬🇭 Ghana</span>
+    <span>17/08/2026</span>
   </div>
 
   <div class="booking">
-    <h3>Booking Code</h3>
-    <h1>8YDK3Y1</h1>
-  </div>
-
-  <div class="odds-box">
-    <span>Odds</span>
-    <span><b>5.10</b></span>
-  </div>
-  <div class="odds-box" style="margin-top:-5px;">
-    <span>Max Bonus</span>
-    <span>2.40%</span>
-  </div>
-
-  <div class="section">Example Bet</div>
-  <div class="example">
-    <div><span>Stake</span><span>100.00</span></div>
-    <div><span>Bonus</span><span>10.93</span></div>
-    <div><span>Payout</span><span><b>520.98</b></span></div>
-  </div>
-
-  <div class="section">Selections</div>
-
-  <div class="bet-row">
-    <div class="top">
-      <span>⚽ Yes</span><span>2.30</span>
+    <h3>FREE BOOKING CODE</h3>
+    <div class="code-wrap">
+      <h1 id="bookingCode">8YDK3Y1</h1>
+      <button class="copy-btn" onclick="copyCode()">COPY</button>
     </div>
-    <div class="teams">Casa Pia Lisbon vs Benfica</div>
-    <div class="market">GG/NG</div>
   </div>
 
+  <div class="odds-box"><span>Odds</span><span><b>5.10</b></span></div>
+  <div class="odds-box" style="margin-top:-5px;"><span>Max Bonus</span><span>2.50%</span></div>
+
+  <div class="section">FREE Selections</div>
   <div class="bet-row">
-    <div class="top">
-      <span>⚽ Yes</span><span>1.98</span>
-    </div>
-    <div class="teams">SC Pisa vs Empoli</div>
-    <div class="market">GG/NG</div>
+    <div class="top"><span>⚽ Over 1.5</span><span>1.45</span></div>
+    <div class="teams">Liverpool vs Chelsea</div>
+    <div class="market">Goals</div>
   </div>
-
   <div class="bet-row">
-    <div class="top">
-      <span>⚽ Home (1:0)</span><span>1.12</span>
-    </div>
-    <div class="teams">Sassuolo vs Cesena FC</div>
-    <div class="market">Handicap 1:0</div>
+    <div class="top"><span>⚽ Home Win</span><span>1.90</span></div>
+    <div class="teams">Man Utd vs Fulham</div>
+    <div class="market">1X2</div>
+  </div>
+  <div class="bet-row">
+    <div class="top"><span>⚽ BTTS - Yes</span><span>1.85</span></div>
+    <div class="teams">Barcelona vs Real Madrid</div>
+    <div class="market">GG</div>
   </div>
 
-  <a href="https://www.sportybet.com/gh/sport/bet-slip?bookingCode=8YDK3Y1" target="_blank" class="load-btn">
-    LOAD BET ON SPORTYBET
-  </a>
-
-  <p class="disclaimer">18+ Only. Bet responsibly. Gambling can be addictive.</p>
+  <a href="https://www.sportybet.com/gh/sport/bet-slip?bookingCode=8YDK3Y1" target="_blank" class="load-btn">LOAD FREE BET ON SPORTYBET</a>
+  <a href="vip.html" class="vip-btn">👑 JOIN VIP - ODDS 12.45+ 👑</a>
+  <p class="disclaimer">18+ Only. Bet responsibly.</p>
 </div>
-
+<div id="toast" class="toast">Code Copied! ✅</div>
+<script>
+function copyCode() {
+  const code = document.getElementById("bookingCode").innerText;
+  navigator.clipboard.writeText(code);
+  const toast = document.getElementById("toast");
+  toast.classList.add("show");
+  setTimeout(() => { toast.classList.remove("show"); }, 2000);
+}
+</script>
 </body>
 </html>
