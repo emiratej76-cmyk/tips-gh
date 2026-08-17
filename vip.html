@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIP BETHUB - SportyBet</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  .vip-badge {
+    background: linear-gradient(90deg, #FFD700, #FFA500);
+    color: #000;
+    text-align: center;
+    padding: 5px;
+    font-weight: 900;
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+  .betslip {
+    background: #1a1a1a;
+    color: #fff;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(255,215,0,0.5);
+    border: 2px solid gold;
+  }
+  .header {
+    background: #FFD700;
+    color: #000;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .booking { text-align: center; padding: 15px; }
+  .booking h3 { margin: 0; font-size: 14px; color: #FFD700; }
+  .code-wrap { display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 5px; }
+  .booking h1 { margin: 0; font-size: 36px; color: #00ff00; letter-spacing: 2px; }
+  .copy-btn {
+    background: #FFD700; border: 1px solid #FFD700; color: #000;
+    padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: bold;
+  }
+  .odds-box { background: #222; margin: 10px 20px; padding: 10px; border-radius: 8px; display: flex; justify-content: space-between; }
+  .section { background: #FFD700; color: #000; padding: 8px 15px; font-weight: bold; }
+  .bet-row { background: #fff; color: #000; padding: 12px 15px; border-bottom: 1px solid #ddd; }
+  .bet-row .top { display: flex; justify-content: space-between; font-weight: bold; font-size: 16px; }
+  .bet-row .teams { font-size: 14px; margin-top: 3px; }
+  .bet-row .market { font-weight: bold; font-size: 13px; color: #e10600; }
+  .load-btn {
+    display: block; background: #FFD700; color: #000; text-align: center;
+    padding: 15px; font-size: 18px; font-weight: bold; text-decoration: none; margin: 15px; border-radius: 8px;
+  }
+  .load-btn:hover { background: #FFA500; }
+  .disclaimer { font-size: 11px; color: #aaa; text-align: center; padding: 10px; }
+  .toast { visibility: hidden; background: #FFD700; color: #000; text-align: center; border-radius: 5px; padding: 8px; position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); font-weight: bold; }
+  .toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 1.5s; }
+  @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+  @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+  
+  /* PASSWORD LOCK */
+  #lockscreen { position: fixed; top:0; left:0; width:100%; height:100%; background:#000; display:flex; justify-content:center; align-items:center; z-index:999; }
+  .lockbox { background:#1a1a1a; padding:30px; border-radius:12px; text-align:center; border:2px solid gold; }
+  .lockbox input { padding:10px; width:200px; border-radius:6px; border:1px solid gold; background:#222; color:#fff; text-align:center; font-size:16px; }
+  .lockbox button { padding:10px 20px; margin-top:10px; background:gold; border:none; border-radius:6px; font-weight:bold; cursor:pointer; }
+  .error { color:red; margin-top:10px; font-size:12px; }
+</style>
+</head>
+<body>
+
+<!-- PASSWORD SCREEN -->
+<div id="lockscreen">
+  <div class="lockbox">
+    <h2 style="color:gold;">👑 VIP ACCESS ONLY 👑</h2>
+    <p style="color:#ccc;">Enter VIP Password</p>
+    <input type="password" id="vipPass" placeholder="Enter Password">
+    <br>
+    <button onclick="checkPass()">UNLOCK VIP</button>
+    <div class="error" id="error"></div>
+  </div>
+</div>
+
+<!-- VIP CONTENT -->
+<div id="vipcontent" style="display:none;">
+<div class="betslip">
+  <div class="vip-badge">★★★ VIP BETHUB ★★★</div>
+  <div class="header">
+    <span>🏆 SportyBet 🇬🇭 Ghana VIP</span>
+    <span>17/08/2026</span>
+  </div>
+
+  <div class="booking">
+    <h3>VIP BOOKING CODE</h3>
+    <div class="code-wrap">
+      <h1 id="bookingCode">VIP9K2X7</h1>
+      <button class="copy-btn" onclick="copyCode()">COPY</button>
+    </div>
+  </div>
+
+  <div class="odds-box">
+    <span>Odds</span>
+    <span><b>12.45</b></span>
+  </div>
+  <div class="odds-box" style="margin-top:-5px;">
+    <span>Max Bonus</span>
+    <span>4.50%</span>
+  </div>
+
+  <div class="section">VIP Example Bet</div>
+  <div class="example" style="background:#fff; color:#000; padding:12px 15px;">
+    <div style="display:flex; justify-content:space-between; margin:5px 0;"><span>Stake</span><span>200.00</span></div>
+    <div style="display:flex; justify-content:space-between; margin:5px 0;"><span>Bonus</span><span>98.40</span></div>
+    <div style="display:flex; justify-content:space-between; margin:5px 0;"><span>Payout</span><span><b>2588.40</b></span></div>
+  </div>
+
+  <div class="section">VIP Selections</div>
+
+  <div class="bet-row">
+    <div class="top"><span>⚽ Over 2.5</span><span>1.85</span></div>
+    <div class="teams">Man City vs Arsenal</div>
+    <div class="market">Goals</div>
+  </div>
+
+  <div class="bet-row">
+    <div class="top"><span>⚽ BTTS - Yes</span><span>1.70</span></div>
+    <div class="teams">Real Madrid vs Barcelona</div>
+    <div class="market">GG</div>
+  </div>
+
+  <div class="bet-row">
+    <div class="top"><span>⚽ Away Win</span><span>3.95</span></div>
+    <div class="teams">Bayern vs Dortmund</div>
+    <div class="market">1X2</div>
+  </div>
+
+  <a href="https://www.sportybet.com/gh/sport/bet-slip?bookingCode=VIP9K2X7" target="_blank" class="load-btn">
+    LOAD VIP BET ON SPORTYBET
+  </a>
+
+  <p class="disclaimer">18+ Only. VIP Members Only. Bet responsibly.</p>
+</div>
+</div>
+
+<div id="toast" class="toast">VIP Code Copied! ✅</div>
+
+<script>
+// CHANGE THIS PASSWORD
+const VIP_PASSWORD = "VIP2026"; 
+
+function checkPass() {
+  const input = document.getElementById("vipPass").value;
+  if(input === VIP_PASSWORD) {
+    document.getElementById("lockscreen").style.display = "none";
+    document.getElementById("vipcontent").style.display = "block";
+  } else {
+    document.getElementById("error").innerText = "Wrong Password! Contact Admin";
+  }
+}
+
+function copyCode() {
+  const code = document.getElementById("bookingCode").innerText;
+  navigator.clipboard.writeText(code);
+  const toast = document.getElementById("toast");
+  toast.classList.add("show");
+  setTimeout(() => { toast.classList.remove("show"); }, 2000);
+}
+</script>
+
+</body>
+</html>
