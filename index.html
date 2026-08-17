@@ -53,7 +53,7 @@
   .toast.vip { background: gold; color: #000; }
   @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
   @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
-  #lockscreen { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.98); display:flex; justify-content:center; align-items:center; z-index:999; }
+  #lockscreen { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.98); display:none; justify-content:center; align-items:center; z-index:999; }
   .lockbox { background:#111; padding:35px; border-radius:14px; text-align:center; border:2px solid gold; }
   .lockbox input { padding:12px; width:220px; border-radius:8px; border:1px solid gold; background:#000; color:#fff; text-align:center; font-size:16px; font-weight:700; }
   .lockbox button { padding:12px 24px; margin-top:12px; background:gold; border:none; border-radius:8px; font-weight:900; cursor:pointer; font-size:15px; }
@@ -63,7 +63,7 @@
 </head>
 <body>
 
-<div id="lockscreen" class="hidden">
+<div id="lockscreen">
   <div class="lockbox">
     <h2 style="color:gold; font-size:22px; margin-bottom:10px;">👑 VIP ACCESS ONLY 👑</h2>
     <p style="color:#ccc; margin-bottom:15px;">Enter VIP Password</p>
@@ -81,71 +81,34 @@
     <div id="tab-vip" class="tab inactive" onclick="showTab('vip')">👑 VIP</div>
   </div>
 
-  <!-- FREE CONTENT -->
+  <!-- FREE CONTENT - OPENS FIRST -->
   <div id="content-free" class="betslip free">
     <div class="badge-free">★ FREE DAILY TIPS ★</div>
-    <div class="header free">
-      <span>🏆 SportyBet 🇬🇭 Ghana</span>
-      <span>17/08/2026 19:44</span>
-    </div>
-
+    <div class="header free"><span>🏆 SportyBet 🇬🇭 Ghana</span><span>17/08/2026 19:44</span></div>
     <div class="booking free">
       <h3>Booking Code</h3>
-      <div class="code-wrap">
-        <h1 id="freeCode">8YDK3Y1</h1>
-        <button class="copy-btn free" onclick="copyCode('freeCode', 'free')">COPY</button>
-      </div>
+      <div class="code-wrap"><h1 id="freeCode">8YDK3Y1</h1><button class="copy-btn free" onclick="copyCode('freeCode', 'free')">COPY</button></div>
     </div>
-
     <div class="odds-box"><span>Odds</span><span><b>5.10</b></span></div>
     <div class="odds-box" style="margin-top:-8px;"><span>Max Bonus</span><span>2.40%</span></div>
-
     <div class="section free">Example Bet</div>
-    <div class="example">
-      <div class="example-row"><span>Stake</span><span>100.00</span></div>
-      <div class="example-row"><span>Bonus</span><span>10.93</span></div>
-      <div class="example-row"><span>Payout</span><span><b>520.98</b></span></div>
-    </div>
-
+    <div class="example"><div class="example-row"><span>Stake</span><span>100.00</span></div><div class="example-row"><span>Bonus</span><span>10.93</span></div><div class="example-row"><span>Payout</span><span><b>520.98</b></span></div></div>
     <div class="section free">Selections</div>
-    
-    <div class="bet-row">
-      <div class="top"><span>⚽ Yes</span><span>2.30</span></div>
-      <div class="teams">Casa Pia Lisbon vs Benfica</div>
-      <div class="market">GG/NG</div>
-    </div>
-    <div class="bet-row">
-      <div class="top"><span>⚽ Yes</span><span>1.98</span></div>
-      <div class="teams">SC Pisa vs Empoli</div>
-      <div class="market">GG/NG</div>
-    </div>
-    <div class="bet-row">
-      <div class="top"><span>⚽ Home (1:0)</span><span>1.12</span></div>
-      <div class="teams">Sassuolo vs Cesena FC</div>
-      <div class="market">Handicap 1:0</div>
-    </div>
-
+    <div class="bet-row"><div class="top"><span>⚽ Yes</span><span>2.30</span></div><div class="teams">Casa Pia Lisbon vs Benfica</div><div class="market">GG/NG</div></div>
+    <div class="bet-row"><div class="top"><span>⚽ Yes</span><span>1.98</span></div><div class="teams">SC Pisa vs Empoli</div><div class="market">GG/NG</div></div>
+    <div class="bet-row"><div class="top"><span>⚽ Home (1:0)</span><span>1.12</span></div><div class="teams">Sassuolo vs Cesena FC</div><div class="market">Handicap 1:0</div></div>
     <a href="https://www.sportybet.com/gh/sport/bet-slip?bookingCode=8YDK3Y1" target="_blank" class="load-btn free">LOAD FREE BET ON SPORTYBET</a>
-    
-    <!-- WHATSAPP BUTTON FOR FREE USERS -->
-    <a href="https://wa.me/233XXXXXXXXX?text=Hi%20Boss%20I%20want%20to%20join%20VIP" target="_blank" class="whatsapp-btn">📲 JOIN VIP ON WHATSAPP</a>
-    
+    <a href="https://wa.me/971507148631?text=Hi%20Boss%20I%20want%20to%20join%20VIP" target="_blank" class="whatsapp-btn">📲 JOIN VIP ON WHATSAPP</a>
     <p class="disclaimer">18+ Only. Bet responsibly.</p>
   </div>
 
-  <!-- VIP CONTENT -->
+  <!-- VIP CONTENT - HIDDEN AT START -->
   <div id="content-vip" class="betslip vip hidden">
     <div class="badge-vip">★★★ VIP BETHUB PRO ★★★</div>
-    <div class="header vip">
-      <span>🏆 SportyBet 🇬🇭 Ghana VIP</span>
-      <span>17/08/2026</span>
-    </div>
+    <div class="header vip"><span>🏆 SportyBet 🇬🇭 Ghana VIP</span><span>17/08/2026</span></div>
     <div class="booking vip">
       <h3>VIP Booking Code</h3>
-      <div class="code-wrap">
-        <h1 id="vipCode">VIP9K2X7</h1>
-        <button class="copy-btn vip" onclick="copyCode('vipCode', 'vip')">COPY</button>
-      </div>
+      <div class="code-wrap"><h1 id="vipCode">VIP9K2X7</h1><button class="copy-btn vip" onclick="copyCode('vipCode', 'vip')">COPY</button></div>
     </div>
     <div class="odds-box"><span>Odds</span><span><b>12.45</b></span></div>
     <div class="odds-box" style="margin-top:-8px;"><span>Max Bonus</span><span>4.50%</span></div>
@@ -154,10 +117,7 @@
     <div class="bet-row"><div class="top"><span>⚽ BTTS - Yes</span><span>1.70</span></div><div class="teams">Real Madrid vs Barcelona</div><div class="market">GG</div></div>
     <div class="bet-row"><div class="top"><span>⚽ Away Win</span><span>3.95</span></div><div class="teams">Bayern vs Dortmund</div><div class="market">1X2</div></div>
     <a href="https://www.sportybet.com/gh/sport/bet-slip?bookingCode=VIP9K2X7" target="_blank" class="load-btn vip">LOAD VIP BET ON SPORTYBET</a>
-    
-    <!-- WHATSAPP SUPPORT FOR VIP -->
     <a href="https://wa.me/971507148631?text=Hi%20Admin%20I%20need%20help%20with%20VIP" target="_blank" class="whatsapp-btn">📲 VIP SUPPORT ON WHATSAPP</a>
-    
     <p class="disclaimer">18+ Only. VIP Members Only. Bet responsibly.</p>
   </div>
 </div>
@@ -170,7 +130,7 @@ let vipUnlocked = false;
 
 function showTab(tab) {
   if(tab === 'vip' && !vipUnlocked) {
-    document.getElementById("lockscreen").classList.remove("hidden");
+    document.getElementById("lockscreen").style.display = "flex"; // ONLY shows when clicking VIP
     return;
   }
   document.getElementById("content-free").classList.add("hidden");
@@ -185,7 +145,7 @@ function checkPass() {
   const input = document.getElementById("vipPass").value;
   if(input === VIP_PASSWORD) {
     vipUnlocked = true;
-    document.getElementById("lockscreen").classList.add("hidden");
+    document.getElementById("lockscreen").style.display = "none";
     showTab('vip');
   } else {
     document.getElementById("error").innerText = "Wrong Password! Contact Admin";
@@ -193,7 +153,7 @@ function checkPass() {
 }
 
 function closeLock() {
-  document.getElementById("lockscreen").classList.add("hidden");
+  document.getElementById("lockscreen").style.display = "none";
   document.getElementById("vipPass").value = "";
   document.getElementById("error").innerText = "";
 }
@@ -203,9 +163,4 @@ function copyCode(id, type) {
   navigator.clipboard.writeText(code);
   const toast = document.getElementById("toast");
   toast.className = "toast show " + type;
-  toast.innerText = type.toUpperCase() + " Code Copied! ✅";
-  setTimeout(() => { toast.className = "toast"; }, 2000);
-}
-</script>
-</body>
-</html>
+  toast.inner
