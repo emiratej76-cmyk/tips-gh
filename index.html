@@ -3,164 +3,159 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MY PICKS TODAY</title>
+<title>BETHUB INVESTMENT PLANS</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Inter', sans-serif; background: #000; color: #fff; padding: 15px; }
   .main-wrap { width: 100%; max-width: 500px; margin: 0 auto; }
+  .top-title { text-align: center; font-size: 20px; font-weight: 800; color: #FFD700; margin-bottom: 20px; }
   
-  /* PRO HEADER */
-  .top-title { text-align: center; font-size: 18px; font-weight: 800; color: #FFD700; margin-bottom: 20px; }
-  .top-title .dot { color: red; font-size: 20px; }
+  /* CALCULATOR */
+  .calculator { background: #111; border-radius: 12px; padding: 20px; margin-bottom: 20px; border: 1px solid #222; }
+  .calc-title { font-size: 16px; font-weight: 800; margin-bottom: 15px; color: #00FF88; }
+  .calc-row { display: flex; justify-content: space-between; margin-bottom: 12px; }
+  .calc-row label { font-size: 14px; color: #AAA; }
+  .calc-row select, .calc-row input { background: #000; color: #fff; border: 1px solid #333; border-radius: 6px; padding: 8px; width: 120px; font-weight: 700; }
+  .calc-result { background: #0D0D0D; padding: 15px; border-radius: 8px; margin-top: 15px; border-left: 3px solid #00C853; }
+  .calc-result h4 { color: #888; font-size: 13px; }
+  .calc-result h2 { color: #00FF88; font-size: 24px; margin-top: 5px; }
   
-  /* TABS */
-  .tabs { display: flex; background: #111; border-radius: 12px; margin-bottom: 20px; padding: 4px; }
+  /* VIP PLANS */
+  .section-title { font-size: 18px; font-weight: 800; margin: 25px 0 15px 0; color: #FFD700; text-align: center; }
+  .plan-card { background: #111; border-radius: 12px; padding: 20px; margin-bottom: 15px; border: 1px solid #222; }
+  .plan-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .plan-name { font-size: 18px; font-weight: 800; color: #FFD700; }
+  .badge { background: #00C853; color: #000; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 800; }
+  .badge.vip { background: #FFD700; }
+  .payout .label { font-size: 12px; color: #888; }
+  .payout .amount { font-size: 22px; font-weight: 800; color: #00FF88; }
+  .features { margin: 15px 0; font-size: 14px; }
+  .features div { margin: 6px 0; color: #BBB; }
+  .features div:before { content: "✓ "; color: #00C853; font-weight: 800; }
+  .join-btn { display: block; width: 100%; padding: 14px; text-align: center; background: #FFD700; color: #000; font-weight: 800; border-radius: 8px; text-decoration: none; font-size: 16px; }
+  
+  /* LIVE PROOF SECTION - NEW */
+  .proof-card { background: #111; border-radius: 12px; padding: 15px; margin-bottom: 12px; border: 1px solid #222; }
+  .proof-top { display: flex; justify-content: space-between; margin-bottom: 8px; }
+  .proof-date { font-size: 12px; color: #888; }
+  .proof-status { background: #00C853; color: #000; padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 800; }
+  .proof-code { font-size: 16px; font-weight: 800; color: #00FF88; letter-spacing: 1px; }
+  .proof-details { font-size: 13px; color: #BBB; margin: 8px 0; }
+  .proof-payout { display: flex; justify-content: space-between; margin-top: 10px; padding-top: 10px; border-top: 1px solid #222; }
+  .proof-payout div span { font-size: 12px; color: #888; }
+  .proof-payout div b { font-size: 15px; color: #FFD700; }
+  
+  /* GAMES */
+  .tabs { display: flex; background: #111; border-radius: 12px; margin: 20px 0; padding: 4px; }
   .tab { flex: 1; padding: 12px; text-align: center; font-weight: 800; cursor: pointer; font-size: 15px; border-radius: 8px; color: #888; }
   .tab.active-free { background: #00C853; color: #000; }
   .tab.active-vip { background: #FFD700; color: #000; }
-  
-  /* GAME CARDS - EXACT LIKE YOUR PIC */
   .game-card { background: #111; border-radius: 12px; padding: 16px; margin-bottom: 14px; border: 1px solid #222; }
-  .live-tag { background: red; color: #fff; font-weight: 800; font-size: 12px; padding: 5px 10px; border-radius: 6px; display: inline-block; margin-bottom: 10px; }
-  .league { font-size: 13px; color: #AAA; margin-bottom: 6px; font-weight: 500; }
-  .teams { font-size: 18px; font-weight: 800; margin-bottom: 12px; }
-  .pick { font-size: 15px; font-weight: 700; color: #FFD700; margin-bottom: 6px; }
-  .odds { font-size: 15px; font-weight: 800; color: #00FF88; }
-  
-  /* BOOKING CODE BOX */
-  .booking-box { background: #111; border-radius: 12px; padding: 20px; margin: 20px 0; text-align: center; border: 1px solid #222; }
-  .booking-box h3 { font-size: 13px; color: #888; margin-bottom: 10px; font-weight: 600; }
-  .code-wrap { display: flex; justify-content: center; align-items: center; gap: 10px; }
-  .booking-box h1 { font-size: 28px; color: #00FF88; font-weight: 800; letter-spacing: 2px; }
-  .copy-btn { border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 800; background: #00C853; color: #000; }
-  
-  .whatsapp-btn { display: block; text-align: center; padding: 16px; font-size: 16px; font-weight: 800; text-decoration: none; margin: 20px 0; border-radius: 12px; background: #25D366; color: #fff; }
-  .load-btn { display: block; text-align: center; padding: 16px; font-size: 16px; font-weight: 800; text-decoration: none; margin: 0 0 20px 0; border-radius: 12px; background: #00C853; color: #000; }
-  .load-btn.vip { background: #FFD700; }
-  .disclaimer { font-size: 12px; color: #666; text-align: center; padding: 10px; }
-  
+  .live-tag { background: red; color: #fff; font-weight: 800; font-size: 12px; padding: 5px 10px; border-radius: 6px; display: inline-block; }
   .hidden { display: none; }
-  
-  /* PASSWORD LOCK */
-  #lockscreen { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); display:none; justify-content:center; align-items:center; z-index:999; }
-  .lockbox { background:#111; padding:30px; border-radius:12px; text-align:center; border:1px solid #222; }
-  .lockbox input { padding:12px; width:220px; border-radius:8px; border:1px solid #333; background:#000; color:#fff; text-align:center; font-size:16px; font-weight:700; }
-  .lockbox button { padding:12px 24px; margin-top:12px; background:#FFD700; border:none; border-radius:8px; font-weight:800; cursor:pointer; font-size:15px; color:#000; }
+  .whatsapp-btn { display: block; text-align: center; padding: 16px; font-size: 16px; font-weight: 800; text-decoration: none; margin: 20px 0; border-radius: 12px; background: #25D366; color: #fff; }
+  .disclaimer { font-size: 11px; color: #555; text-align: center; padding: 10px; }
 </style>
 </head>
 <body>
 
-<div id="lockscreen">
-  <div class="lockbox">
-    <h2 style="color:#FFD700; font-size:20px; margin-bottom:10px;">👑 VIP ACCESS</h2>
-    <p style="color:#888; margin-bottom:15px;">Enter VIP Password</p>
-    <input type="password" id="vipPass" placeholder="Enter Password">
-    <br>
-    <button onclick="checkPass()">UNLOCK</button>
-    <button onclick="closeLock()" style="background:#333; color:#fff; margin-left:10px;">CANCEL</button>
-  </div>
-</div>
-
 <div class="main-wrap">
-  <!-- TABS -->
+  <div class="top-title">🔥 BETHUB INVESTMENT PLANS 🔥</div>
+
+  <!-- 1. CALCULATOR -->
+  <div class="calculator">
+    <div class="calc-title">📊 Betting ROI Calculator</div>
+    <div class="calc-row"><label>Monthly Investment</label><select id="stake" onchange="calc()"><option value="50">GH₵ 50</option><option value="100">GH₵ 100</option></select></div>
+    <div class="calc-row"><label>Investment For</label><select id="months" onchange="calc()"><option value="1">1 Month</option><option value="3">3 Months</option></select></div>
+    <div class="calc-row"><label>Average Odds</label><input type="number" id="odds" value="5.10" onchange="calc()"></div>
+    <div class="calc-result"><h4>Estimated Payout</h4><h2 id="result">GH₵ 255.00</h2></div>
+  </div>
+
+  <!-- 2. VIP PLANS -->
+  <div class="section-title">👑 CHOOSE YOUR PLAN</div>
+  <div class="plan-card">
+    <div class="plan-header"><div class="plan-name">BETHUB VIP BASIC</div><div class="badge">50GH / MONTH</div></div>
+    <div class="payout"><div class="label">Illustrated Monthly Return</div><div class="amount">@150%</div></div>
+    <div class="features"><div>Daily 3 Free Tips + 2 VIP Tips</div><div>Live Scores + Booking Codes</div><div>WhatsApp VIP Group Access</div></div>
+    <a href="https://wa.me/233XXXXXXXXX?text=Hi%20I%20want%20VIP%20BASIC%2050GH" class="join-btn">JOIN NOW - 50GH</a>
+  </div>
+
+  <div class="plan-card">
+    <div class="plan-header"><div class="plan-name">BETHUB VIP PRO</div><div class="badge vip">150GH / 3 MONTHS</div></div>
+    <div class="payout"><div class="label">Illustrated 3M Return</div><div class="amount">@200%</div></div>
+    <div class="features"><div>Everything in Basic +</div><div>5 VIP Tips Per Day</div><div>Personal WhatsApp Support</div></div>
+    <a href="https://wa.me/233XXXXXXXXX?text=Hi%20I%20want%20VIP%20PRO%20150GH" class="join-btn">JOIN NOW - 150GH</a>
+  </div>
+
+  <!-- 3. LIVE PROOF SECTION - NEW -->
+  <div class="section-title">🏆 LIVE PROOF - RECENT WINS</div>
+  
+  <div class="proof-card">
+    <div class="proof-top"><div class="proof-date">16 Aug 2026</div><div class="proof-status">WON</div></div>
+    <div class="proof-code">Code: 8YDK3Y1</div>
+    <div class="proof-details">3 Games | Odds: 5.10</div>
+    <div class="proof-payout">
+      <div><span>Stake</span><br><b>GH₵ 50</b></div>
+      <div><span>Payout</span><br><b>GH₵ 255.00</b></div>
+    </div>
+  </div>
+
+  <div class="proof-card">
+    <div class="proof-top"><div class="proof-date">15 Aug 2026</div><div class="proof-status">WON</div></div>
+    <div class="proof-code">Code: VIP9K2X7</div>
+    <div class="proof-details">VIP 4 Games | Odds: 12.45</div>
+    <div class="proof-payout">
+      <div><span>Stake</span><br><b>GH₵ 100</b></div>
+      <div><span>Payout</span><br><b>GH₵ 1,245.00</b></div>
+    </div>
+  </div>
+
+  <div class="proof-card">
+    <div class="proof-top"><div class="proof-date">14 Aug 2026</div><div class="proof-status">WON</div></div>
+    <div class="proof-code">Code: 7PLM4R9</div>
+    <div class="proof-details">3 Games | Odds: 4.80</div>
+    <div class="proof-payout">
+      <div><span>Stake</span><br><b>GH₵ 50</b></div>
+      <div><span>Payout</span><br><b>GH₵ 240.00</b></div>
+    </div>
+  </div>
+
+  <!-- 4. GAMES -->
   <div class="tabs">
-    <div id="tab-free" class="tab active-free" onclick="showTab('free')">FREE</div>
-    <div id="tab-vip" class="tab inactive" onclick="showTab('vip')">👑 VIP</div>
+    <div id="tab-free" class="tab active-free" onclick="showTab('free')">FREE PICKS</div>
+    <div id="tab-vip" class="tab inactive" onclick="showTab('vip')">👑 VIP PICKS</div>
   </div>
 
-  <!-- FREE CONTENT -->
   <div id="content-free">
-    <div class="top-title"><span class="dot">🔴</span> MY PICKS TODAY - AUG 17, 2026</div>
-    
-    <div class="booking-box">
-      <h3>SPORTYBET BOOKING CODE</h3>
-      <div class="code-wrap">
-        <h1 id="freeCode">8YDK3Y1</h1>
-        <button class="copy-btn" onclick="copyCode('freeCode')">COPY</button>
-      </div>
-    </div>
-
-    <!-- YOUR 3 GAMES FROM SCREENSHOT -->
-    <div class="game-card">
-      <div class="live-tag">LIVE</div>
-      <div class="league">Portugal Primeira Liga | Time TBA</div>
-      <div class="teams">Casa Pia Lisbon vs Benfica</div>
-      <div class="pick">Pick: Both Teams to Score - YES</div>
-      <div class="odds">Odds: @2.30</div>
-    </div>
-
-    <div class="game-card">
-      <div class="live-tag">LIVE</div>
-      <div class="league">Italy Serie B | Time TBA</div>
-      <div class="teams">SC Pisa vs Empoli</div>
-      <div class="pick">Pick: Both Teams to Score - YES</div>
-      <div class="odds">Odds: @1.98</div>
-    </div>
-
-    <div class="game-card">
-      <div class="live-tag">LIVE</div>
-      <div class="league">Italy Serie A | Time TBA</div>
-      <div class="teams">Sassuolo vs Cesena FC</div>
-      <div class="pick">Pick: Home Win with Handicap (1:0)</div>
-      <div class="odds">Odds: @1.12</div>
-    </div>
-
-    <a href="https://www.sportybet.com/gh/sport/bet-slip?bookingCode=8YDK3Y1" target="_blank" class="load-btn">LOAD FREE BET ON SPORTYBET</a>
-    <a href="https://wa.me/971507148631?text=Hi%20Boss%20I%20want%20to%20join%20VIP" target="_blank" class="whatsapp-btn">📲 JOIN VIP ON WHATSAPP</a>
-    <p class="disclaimer">18+ Only. Bet responsibly.</p>
+    <div class="game-card"><div class="live-tag">LIVE</div><div>Casa Pia vs Benfica - BTTS YES @2.30</div></div>
   </div>
-
-  <!-- VIP CONTENT -->
+  
   <div id="content-vip" class="hidden">
-    <div class="top-title"><span class="dot">🔴</span> VIP PICKS TODAY - AUG 17, 2026</div>
-    
-    <div class="booking-box">
-      <h3>SPORTYBET VIP BOOKING CODE</h3>
-      <div class="code-wrap">
-        <h1 id="vipCode">VIP9K2X7</h1>
-        <button class="copy-btn" onclick="copyCode('vipCode')">COPY</button>
-      </div>
-    </div>
-
-    <div class="game-card">
-      <div class="live-tag">LIVE</div>
-      <div class="league">Premier League | 20:00 GMT</div>
-      <div class="teams">Man City vs Arsenal</div>
-      <div class="pick">Pick: Over 2.5 Goals</div>
-      <div class="odds">Odds: @1.85</div>
-    </div>
-
-    <div class="game-card">
-      <div class="live-tag">LIVE</div>
-      <div class="league">La Liga | 21:00 GMT</div>
-      <div class="teams">Real Madrid vs Barcelona</div>
-      <div class="pick">Pick: Both Teams to Score - YES</div>
-      <div class="odds">Odds: @1.70</div>
-    </div>
-
-    <div class="game-card">
-      <div class="live-tag">LIVE</div>
-      <div class="league">Bundesliga | 19:30 GMT</div>
-      <div class="teams">Bayern Munich vs Dortmund</div>
-      <div class="pick">Pick: Away Win</div>
-      <div class="odds">Odds: @3.95</div>
-    </div>
-
-    <a href="https://www.sportybet.com/gh/sport/bet-slip?bookingCode=VIP9K2X7" target="_blank" class="load-btn vip">LOAD VIP BET ON SPORTYBET</a>
-    <a href="https://wa.me/971507148631?text=Hi%20Admin%20I%20need%20VIP%20Support" target="_blank" class="whatsapp-btn">📲 VIP SUPPORT ON WHATSAPP</a>
-    <p class="disclaimer">18+ Only. VIP Members Only. Bet responsibly.</p>
+    <div class="game-card"><div class="live-tag">VIP</div><div>Man City vs Arsenal - Over 2.5 @1.85</div></div>
   </div>
+
+  <a href="https://wa.me/233XXXXXXXXX?text=Hi%20Boss%20I%20saw%20the%20proof" class="whatsapp-btn">📲 JOIN VIP ON WHATSAPP</a>
+  <p class="disclaimer">*Past results do not guarantee future winnings. 18+ Bet responsibly.</p>
 </div>
 
 <script>
+function calc(){
+  let stake = parseFloat(document.getElementById('stake').value);
+  let months = parseFloat(document.getElementById('months').value);
+  let odds = parseFloat(document.getElementById('odds').value);
+  let totalStake = stake * months;
+  let estReturn = totalStake * odds * 0.25;
+  document.getElementById('result').innerText = 'GH₵ ' + estReturn.toFixed(2);
+}
+calc();
+
 const VIP_PASSWORD = "VIP2026";
 let vipUnlocked = false;
-
 function showTab(tab) {
   if(tab === 'vip' && !vipUnlocked) {
-    document.getElementById("lockscreen").style.display = "flex";
-    return;
+    let pass = prompt("Enter VIP Password:");
+    if(pass === VIP_PASSWORD) vipUnlocked = true; else return;
   }
   document.getElementById("content-free").classList.add("hidden");
   document.getElementById("content-vip").classList.add("hidden");
@@ -168,28 +163,6 @@ function showTab(tab) {
   document.getElementById("tab-vip").className = "tab";
   document.getElementById("content-" + tab).classList.remove("hidden");
   document.getElementById("tab-" + tab).className = "tab active-" + tab;
-}
-
-function checkPass() {
-  const input = document.getElementById("vipPass").value;
-  if(input === VIP_PASSWORD) {
-    vipUnlocked = true;
-    document.getElementById("lockscreen").style.display = "none";
-    showTab('vip');
-  } else {
-    alert("Wrong Password!");
-  }
-}
-
-function closeLock() {
-  document.getElementById("lockscreen").style.display = "none";
-  document.getElementById("vipPass").value = "";
-}
-
-function copyCode(id) {
-  const code = document.getElementById(id).innerText;
-  navigator.clipboard.writeText(code);
-  alert("Code Copied: " + code);
 }
 </script>
 </body>
