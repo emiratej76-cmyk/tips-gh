@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TIPS GH - ADMIN</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial; }
+    body { background: #0d1117; color: white; padding: 15px; }
+   .container { max-width: 600px; margin: 0 auto; }
+    h1 { color: #FFD700; text-align: center; margin-bottom: 20px; }
+   .card { background: #161b22; padding: 20px; border-radius: 12px; margin-bottom: 20px; border: 1px solid #30363d; }
+    input, textarea, select { width: 100%; padding: 12px; margin: 8px 0; background: #21262d; border: 1px solid #30363d; border-radius: 8px; color: white; }
+    button { width: 100%; padding: 14px; background: #00ff88; color: #000; border: none; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; margin-top: 10px; }
+   .delete-btn { background: #ff4444; color: white; }
+   .proof-item { background: #21262d; padding: 10px; border-radius: 8px; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔒 TIPS GH ADMIN</h1>
+
+    <!-- ADD NEW PROOF -->
+    <div class="card">
+      <h3>Add New Win Proof</h3>
+      <input type="date" id="proofDate">
+      <input type="text" id="proofCode" placeholder="Booking Code: e.g ACPGXE">
+      <input type="text" id="proofInfo" placeholder="Info: e.g SportyBet Instant | Odds: 5.97">
+      <input type="number" id="proofStake" placeholder="Stake: e.g 100">
+      <input type="number" id="proofPayout" placeholder="Payout: e.g 1874.02">
+      <button onclick="addProof()">ADD PROOF</button>
+    </div>
+
+    <!-- ADD NEW GAME -->
+    <div class="card">
+      <h3>Add Today's Game</h3>
+      <input type="text" id="gameTeams" placeholder="Teams: e.g Celtic vs LASK">
+      <select id="gamePick">
+        <option value="Home Win">Home Win</option>
+        <option value="Away Win">Away Win</option>
+        <option value="Draw">Draw</option>
+        <option value="Over 2.5">Over 2.5</option>
+      </select>
+      <input type="number" step="0.01" id="gameOdds" placeholder="Odds: e.g 1.76">
+      <input type="text" id="gameLeague" placeholder="League: e.g UCL Qualifier">
+      <button onclick="addGame()">ADD GAME</button>
+    </div>
+
+    <!-- CURRENT DATA -->
+    <div class="card">
+      <h3>Current Proofs</h3>
+      <div id="proofList"></div>
+    </div>
+
+    <div class="card">
+      <h3>Current Games</h3>
+      <div id="gameList"></div>
+    </div>
+
+    <button onclick="saveData()" style="background: #FFD700;">SAVE & UPDATE WEBSITE</button>
+    <a href="index.html"><button>VIEW CLIENT SITE</button></a>
+
+  </div>
+
+  <script>
+    let proofs = JSON.parse(localStorage.getItem('tipsgh_proofs') || '[]');
+    let games = JSON.parse(localStorage.getItem('tipsgh_games') || '[]');
+
+    function addProof() {
+      const proof = {
+        date: document.getElementById('proofDate').value,
+        code: document.getElementById('proofCode').value,
+        info: document.getElementById('proofInfo').value,
+        stake: document.getElementById('proofStake').value,
+        payout: document.getElementById('proofPayout').value
+      };
+      proofs.unshift(proof);
+      localStorage.setItem('tipsgh_proofs', JSON.stringify(proofs));
+      alert('Proof Added!');
+      loadData();
+    }
+
+    function addGame() {
+      const game = {
+        teams: document.getElementById('gameTeams').value,
+        pick: document.getElementById('gamePick').value,
+        odds: document.getElementById('gameOdds').value,
+        league: document.getElementById('gameLeague').value
+      };
+      games = [game]; // Only keep 3 games, replaces old
+      localStorage.setItem('tipsgh_games', JSON.stringify(games));
+      alert('Game Added!');
+      loadData();
+    }
+
+    function loadData() {
+      document.getElementById('proofList').innerHTML = proofs.map((p,i) => `
+        <div class="proof-item">
+          ${p.date} - ${p.code} - GH₵${p.payout}
+          <button class="delete-btn" onclick="deleteProof(${i})">Delete</button>
+        </div>
+      `).join('');
+
+      document.getElementById('gameList').innerHTML = games.map((g,i) => `
+        <div class="proof-item">
+          ${g.teams} - ${g.pick} @ ${g.odds}
+        </div>
+      `).join('');
+    }
+
+    function deleteProof(i) {
+      proofs.splice(i,1);
+      localStorage.setItem('tipsgh_proofs', JSON.stringify(proofs));
+      loadData();
+    }
+
+    function saveData() {
+      alert('Data Saved! Now go to index.html to see changes.');
+    }
+
+    loadData();
+  </script>
+</body>
+</html>
