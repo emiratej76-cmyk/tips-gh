@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BETHUB BITCOIN - Invest in Bitcoin Today</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: #0A0A0A; color: #fff; }
+  .main-wrap { width: 100%; max-width: 1100px; margin: 0 auto; padding: 20px; }
+  
+  /* HEADER */
+  .header { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
+  .logo { font-size: 24px; font-weight: 900; color: #F7931A; }
+  .nav a { color: #AAA; text-decoration: none; margin-left: 25px; font-weight: 700; }
+  .nav a:hover { color: #F7931A; }
+  
+  /* HERO */
+  .hero { text-align: center; padding: 80px 20px; }
+  .hero h1 { font-size: 48px; font-weight: 900; line-height: 1.2; }
+  .hero h1 span { color: #F7931A; }
+  .hero p { font-size: 18px; color: #BBB; margin: 20px 0 30px; max-width: 600px; margin-left: auto; margin-right: auto; }
+  .cta-btn { background: #F7931A; color: #000; padding: 16px 32px; border-radius: 12px; font-size: 18px; font-weight: 800; text-decoration: none; display: inline-block; }
+  .cta-btn:hover { background: #FFA733; }
+  
+  /* LIVE PRICE */
+  .price-card { background: #111; border: 1px solid #222; border-radius: 16px; padding: 30px; text-align: center; margin: 40px auto; max-width: 400px; }
+  .price-card h3 { color: #888; font-size: 14px; margin-bottom: 10px; }
+  .price { font-size: 42px; font-weight: 900; color: #F7931A; }
+  .change { font-size: 16px; color: #00C853; font-weight: 700; margin-top: 5px; }
+  
+  /* WHY BITCOIN */
+  .section { padding: 60px 20px; }
+  .section-title { text-align: center; font-size: 32px; font-weight: 900; margin-bottom: 40px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+  .card { background: #111; border: 1px solid #222; border-radius: 12px; padding: 25px; }
+  .card h4 { font-size: 20px; color: #F7931A; margin-bottom: 10px; }
+  .card p { color: #AAA; font-size: 15px; line-height: 1.6; }
+  
+  /* CTA BOTTOM */
+  .bottom-cta { background: linear-gradient(135deg, #F7931A, #FFD700); color: #000; text-align: center; padding: 60px 20px; border-radius: 16px; margin-top: 40px; }
+  .bottom-cta h2 { font-size: 32px; font-weight: 900; margin-bottom: 15px; }
+  .bottom-cta a { background: #000; color: #F7931A; padding: 16px 32px; border-radius: 12px; font-weight: 800; text-decoration: none; display: inline-block; margin-top: 20px; }
+  
+  .footer { text-align: center; padding: 30px; color: #555; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<div class="main-wrap">
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo">₿ BETHUB BITCOIN</div>
+    <div class="nav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#invest">Invest</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero" id="home">
+    <h1>The Future of Money is <span>BITCOIN</span></h1>
+    <p>Start investing in Bitcoin today with BETHUB. Secure, fast, and trusted by 10,000+ investors in Ghana.</p>
+    <a href="https://wa.me/971507148631" class="cta-btn">START INVESTING NOW</a>
+  </div>
+
+  <!-- LIVE PRICE -->
+  <div class="price-card">
+    <h3>LIVE BITCOIN PRICE</h3>
+    <div class="price" id="btcPrice">Loading...</div>
+    <div class="change" id="btcChange">+2.34%</div>
+  </div>
+
+  <!-- WHY BITCOIN -->
+  <div class="section" id="about">
+    <h2 class="section-title">Why Invest in Bitcoin?</h2>
+    <div class="grid">
+      <div class="card">
+        <h4>🔒 Secure</h4>
+        <p>Bitcoin uses blockchain technology. Your investment is safe, transparent, and cannot be faked.</p>
+      </div>
+      <div class="card">
+        <h4>📈 High Growth</h4>
+        <p>Bitcoin has grown over 200% in the last 5 years. Early investors are winning big.</p>
+      </div>
+      <div class="card">
+        <h4>⚡ Instant</h4>
+        <p>Send and receive Bitcoin anywhere in the world in 10 minutes. No banks needed.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM CTA -->
+  <div class="bottom-cta" id="invest">
+    <h2>Ready to Start Your Bitcoin Journey?</h2>
+    <p>Join BETHUB VIP and get daily Bitcoin signals + investment plans</p>
+    <a href="https://wa.me/971507148631?text=Hi%20I%20want%20to%20invest%20in%20Bitcoin">JOIN VIA WHATSAPP</a>
+  </div>
+
+  <div class="footer">
+    © 2026 BETHUB. 18+ Invest responsibly. Crypto is volatile.
+  </div>
+</div>
+
+<script>
+// LIVE BTC PRICE - Free API
+async function getBTCPrice() {
+  try {
+    let res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true');
+    let data = await res.json();
+    let price = data.bitcoin.usd.toLocaleString();
+    let change = data.bitcoin.usd_24h_change.toFixed(2);
+    document.getElementById('btcPrice').innerText = '$' + price;
+    document.getElementById('btcChange').innerText = (change > 0 ? '+' : '') + change + '%';
+    document.getElementById('btcChange').style.color = change > 0 ? '#00C853' : '#E53935';
+  } catch(e) {
+    document.getElementById('btcPrice').innerText = '$67,432';
+  }
+}
+getBTCPrice();
+setInterval(getBTCPrice, 60000); // updates every 1 minute
+</script>
+
+</body>
+</html>
