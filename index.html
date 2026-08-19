@@ -10,19 +10,32 @@
     .container { max-width: 500px; margin: 0 auto; padding: 10px; }
     
     .join-btn { background: #FFD700; color: #000; width: 100%; padding: 16px; border: none; border-radius: 12px; font-weight: 900; font-size: 18px; margin-bottom: 20px; cursor: pointer; }
-    
     .header-title { color: #FFD700; text-align: center; margin: 20px 0; font-size: 18px; font-weight: 900; }
     
-    .proof-card { background: #111; padding: 15px; border-radius: 12px; margin-bottom: 12px; border: 1px solid #222; }
-    .proof-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-    .proof-date { color: #888; font-size: 13px; }
-    .won-badge { background: #00ff88; color: #000; padding: 5px 12px; border-radius: 20px; font-weight: 900; font-size: 12px; }
-    .proof-code { color: #00ff88; font-size: 18px; font-weight: 900; margin-bottom: 5px; }
-    .proof-info { color: #ccc; font-size: 14px; margin-bottom: 12px; }
-    .proof-bottom { display: flex; justify-content: space-between; border-top: 1px solid #222; padding-top: 12px; }
-    .proof-label { color: #888; font-size: 12px; margin-bottom: 3px; }
-    .proof-stake { color: #FFD700; font-weight: 900; font-size: 16px; }
-    .proof-payout { color: #FFD700; font-weight: 900; font-size: 16px; }
+    /* SPORTYBET STYLE PROOF CARD */
+    .sporty-proof { background: #0a0a0a; border-radius: 12px; margin-bottom: 15px; border: 1px solid #222; overflow: hidden; }
+    .sporty-header { background: #d00000; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; }
+    .sporty-logo { font-weight: 900; font-size: 18px; color: white; }
+    .sporty-date { font-size: 12px; color: #fff; }
+    .booking-section { background: #111; padding: 15px; text-align: center; border-bottom: 1px solid #222; }
+    .booking-label { font-size: 13px; color: #aaa; }
+    .booking-code { font-size: 24px; font-weight: 900; color: #00ff88; margin: 5px 0; letter-spacing: 2px; }
+    .odds-box { background: #1a1a1a; margin: 10px 15px; padding: 10px; border-radius: 8px; display: flex; justify-content: space-between; }
+    .odds-label { color: #aaa; }
+    .odds-value { color: white; font-weight: 900; font-size: 18px; }
+    
+    .example-bet { background: #f0f0f0; color: #000; padding: 12px 15px; }
+    .example-title { color: #006600; font-size: 12px; font-weight: bold; margin-bottom: 8px; }
+    .bet-row { display: flex; justify-content: space-between; margin: 5px 0; font-size: 14px; }
+    
+    .selections { background: #111; padding: 10px 0; }
+    .selection-title { background: #1a3a1a; color: #00ff88; padding: 8px 15px; font-size: 12px; font-weight: bold; }
+    .selection-item { padding: 12px 15px; border-bottom: 1px solid #222; }
+    .selection-top { display: flex; justify-content: space-between; margin-bottom: 5px; }
+    .selection-pick { font-weight: 900; }
+    .selection-odds { font-weight: 900; font-size: 16px; }
+    .selection-teams { font-size: 14px; color: #ccc; margin-bottom: 3px; }
+    .selection-market { font-size: 12px; color: #888; font-weight: bold; }
     
     .games-card { background: #111; border-radius: 12px; padding: 20px; margin: 20px 0; border: 1px solid #222; text-align: center; }
     .games-title { color: #00ff88; font-size: 20px; font-weight: 900; margin-bottom: 15px; }
@@ -45,82 +58,58 @@
 
     <h2 class="header-title">🏆 LIVE PROOF - RECENT WINS 🏆</h2>
 
-    <!-- NEW WIN - 19 Aug -->
-    <div class="proof-card">
-      <div class="proof-top">
-        <span class="proof-date">19 Aug 2026</span>
-        <span class="won-badge">WON</span>
+    <!-- SPORTYBET STYLE PROOF -->
+    <div class="sporty-proof">
+      <div class="sporty-header">
+        <div class="sporty-logo">SportyBet 🇬🇭 Ghana</div>
+        <div class="sporty-date">19/08/2026 21:05</div>
       </div>
-      <div class="proof-code">Code: ACPGXE</div>
-      <div class="proof-info">SportyBet Instant Virtuals | Odds: 5.97</div>
-      <div class="proof-bottom">
-        <div>
-          <div class="proof-label">Stake</div>
-          <div class="proof-stake">GH₵ 100</div>
-        </div>
-        <div style="text-align: right;">
-          <div class="proof-label">Payout</div>
-          <div class="proof-payout">GH₵ 1,874.02</div>
-        </div>
+      
+      <div class="booking-section">
+        <div class="booking-label">Booking Code</div>
+        <div class="booking-code">ACPGXE</div>
       </div>
-    </div>
 
-    <!-- OLD WIN 1 -->
-    <div class="proof-card">
-      <div class="proof-top">
-        <span class="proof-date">16 Aug 2026</span>
-        <span class="won-badge">WON</span>
+      <div class="odds-box">
+        <span class="odds-label">Odds</span>
+        <span class="odds-value">5.97</span>
       </div>
-      <div class="proof-code">Code: 8YDK3Y1</div>
-      <div class="proof-info">3 Games | Odds: 5.10</div>
-      <div class="proof-bottom">
-        <div>
-          <div class="proof-label">Stake</div>
-          <div class="proof-stake">GH₵ 50</div>
-        </div>
-        <div style="text-align: right;">
-          <div class="proof-label">Payout</div>
-          <div class="proof-payout">GH₵ 255.00</div>
-        </div>
-      </div>
-    </div>
 
-    <!-- OLD WIN 2 -->
-    <div class="proof-card">
-      <div class="proof-top">
-        <span class="proof-date">15 Aug 2026</span>
-        <span class="won-badge">WON</span>
+      <div class="example-bet">
+        <div class="example-title">Example Bet</div>
+        <div class="bet-row"><span>Stake</span><span>100.00</span></div>
+        <div class="bet-row"><span>Bonus</span><span>23.90</span></div>
+        <div class="bet-row"><span>Payout</span><span>621.38</span></div>
       </div>
-      <div class="proof-code">Code: VIP9K2X7</div>
-      <div class="proof-info">VIP 4 Games | Odds: 12.45</div>
-      <div class="proof-bottom">
-        <div>
-          <div class="proof-label">Stake</div>
-          <div class="proof-stake">GH₵ 100</div>
-        </div>
-        <div style="text-align: right;">
-          <div class="proof-label">Payout</div>
-          <div class="proof-payout">GH₵ 1,245.00</div>
-        </div>
-      </div>
-    </div>
 
-    <!-- OLD WIN 3 -->
-    <div class="proof-card">
-      <div class="proof-top">
-        <span class="proof-date">14 Aug 2026</span>
-        <span class="won-badge">WON</span>
-      </div>
-      <div class="proof-code">Code: 7PLM4R9</div>
-      <div class="proof-info">3 Games | Odds: 4.80</div>
-      <div class="proof-bottom">
-        <div>
-          <div class="proof-label">Stake</div>
-          <div class="proof-stake">GH₵ 50</div>
+      <div class="selections">
+        <div class="selection-title">Selections</div>
+        
+        <div class="selection-item">
+          <div class="selection-top">
+            <span class="selection-pick">⚽ Home</span>
+            <span class="selection-odds">1.76</span>
+          </div>
+          <div class="selection-teams">Celtic vs LASK Linz</div>
+          <div class="selection-market">1X2</div>
         </div>
-        <div style="text-align: right;">
-          <div class="proof-label">Payout</div>
-          <div class="proof-payout">GH₵ 240.00</div>
+
+        <div class="selection-item">
+          <div class="selection-top">
+            <span class="selection-pick">⚽ Home</span>
+            <span class="selection-odds">1.38</span>
+          </div>
+          <div class="selection-teams">Atletico Madrid vs Malaga CF</div>
+          <div class="selection-market">1X2</div>
+        </div>
+
+        <div class="selection-item">
+          <div class="selection-top">
+            <span class="selection-pick">⚽ Away</span>
+            <span class="selection-odds">2.46</span>
+          </div>
+          <div class="selection-teams">NEC Nijmegen vs Bodoe/Glimt</div>
+          <div class="selection-market">1X2</div>
         </div>
       </div>
     </div>
@@ -128,35 +117,22 @@
     <!-- TODAY'S GAMES -->
     <div class="games-card">
       <div class="games-title">🔥 TODAY'S GAMES 🔥</div>
-      
       <div class="game">
         <div class="game-teams">Celtic vs LASK Linz</div>
-        <div class="game-tip">
-          <span class="game-pick">Tip: Home Win</span>
-          <span class="game-odds">1.76</span>
-        </div>
+        <div class="game-tip"><span class="game-pick">Tip: Home Win</span><span class="game-odds">1.76</span></div>
       </div>
-
       <div class="game">
         <div class="game-teams">Atletico Madrid vs Malaga CF</div>
-        <div class="game-tip">
-          <span class="game-pick">Tip: Home Win</span>
-          <span class="game-odds">1.38</span>
-        </div>
+        <div class="game-tip"><span class="game-pick">Tip: Home Win</span><span class="game-odds">1.38</span></div>
       </div>
-
       <div class="game">
         <div class="game-teams">NEC Nijmegen vs Bodoe/Glimt</div>
-        <div class="game-tip">
-          <span class="game-pick">Tip: Away Win</span>
-          <span class="game-odds">2.46</span>
-        </div>
+        <div class="game-tip"><span class="game-pick">Tip: Away Win</span><span class="game-odds">2.46</span></div>
       </div>
     </div>
 
   </div>
 
-  <!-- BOTTOM NAV -->
   <div class="bottom-nav">
     <button class="nav-btn nav-free">FREE PICKS</button>
     <button class="nav-btn nav-vip" onclick="joinVIP()">👑 VIP PICKS</button>
