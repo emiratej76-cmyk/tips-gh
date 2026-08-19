@@ -1,88 +1,168 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TIPS GH - Daily Football Tips</title>
+  <title>TIPS GH</title>
   <style>
-    /* SAME CSS AS BEFORE */
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
-    body { background: #0d1117; color: white; padding-bottom: 80px; }
-   .container { max-width: 600px; margin: 0 auto; padding: 15px; }
-   .join-btn { background: #FFD700; color: #000; width: 100%; padding: 15px; border: none; border-radius: 10px; font-weight: 900; font-size: 18px; margin-bottom: 20px; cursor: pointer; }
-   .header-title { color: #FFD700; text-align: center; margin-bottom: 15px; font-size: 18px; font-weight: bold; }
-   .games-card { background: #161b22; border-radius: 12px; padding: 20px; margin-bottom: 20px; border: 1px solid #30363d; }
-   .games-card h2 { color: #00ff88; text-align: center; margin-bottom: 15px; font-size: 20px; }
-   .game { background: #21262d; padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 4px solid #00ff88; }
-   .proof-card { background: #1a1a1a; padding: 15px; border-radius: 10px; margin-bottom: 12px; border: 1px solid #333; }
-   .proof-top { display: flex; justify-content: space-between; margin-bottom: 8px; }
-   .won-badge { background: #00ff88; color: #000; padding: 3px 10px; border-radius: 6px; font-weight: bold; font-size: 12px; }
-   .proof-code { color: #00ff88; font-size: 16px; font-weight: bold; }
-   .proof-info { color: #ccc; font-size: 14px; margin: 5px 0; }
-   .proof-bottom { display: flex; justify-content: space-between; border-top: 1px solid #333; padding-top: 10px; }
-   .proof-stake,.proof-payout { color: #FFD700; font-weight: bold; }
-   .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #161b22; display: flex; padding: 10px; gap: 10px; border-top: 1px solid #30363d; }
-   .nav-btn { flex: 1; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
-   .nav-free { background: #00ff88; color: #000; }
-   .nav-vip { background: transparent; color: #FFD700; border: 1px solid #FFD700; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { background: #000; color: white; padding-bottom: 80px; }
+    .container { max-width: 500px; margin: 0 auto; padding: 10px; }
+    
+    .join-btn { background: #FFD700; color: #000; width: 100%; padding: 16px; border: none; border-radius: 12px; font-weight: 900; font-size: 18px; margin-bottom: 20px; cursor: pointer; }
+    
+    .header-title { color: #FFD700; text-align: center; margin: 20px 0; font-size: 18px; font-weight: 900; }
+    
+    .proof-card { background: #111; padding: 15px; border-radius: 12px; margin-bottom: 12px; border: 1px solid #222; }
+    .proof-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .proof-date { color: #888; font-size: 13px; }
+    .won-badge { background: #00ff88; color: #000; padding: 5px 12px; border-radius: 20px; font-weight: 900; font-size: 12px; }
+    .proof-code { color: #00ff88; font-size: 18px; font-weight: 900; margin-bottom: 5px; }
+    .proof-info { color: #ccc; font-size: 14px; margin-bottom: 12px; }
+    .proof-bottom { display: flex; justify-content: space-between; border-top: 1px solid #222; padding-top: 12px; }
+    .proof-label { color: #888; font-size: 12px; margin-bottom: 3px; }
+    .proof-stake { color: #FFD700; font-weight: 900; font-size: 16px; }
+    .proof-payout { color: #FFD700; font-weight: 900; font-size: 16px; }
+    
+    .games-card { background: #111; border-radius: 12px; padding: 20px; margin: 20px 0; border: 1px solid #222; text-align: center; }
+    .games-title { color: #00ff88; font-size: 20px; font-weight: 900; margin-bottom: 15px; }
+    .game { background: #1a1a1a; padding: 12px; border-radius: 8px; margin-bottom: 10px; text-align: left; }
+    .game-teams { font-size: 15px; font-weight: bold; margin-bottom: 5px; }
+    .game-tip { display: flex; justify-content: space-between; font-size: 14px; }
+    .game-pick { color: #00ff88; font-weight: bold; }
+    .game-odds { background: #00ff88; color: #000; padding: 2px 8px; border-radius: 5px; font-weight: bold; }
+    
+    .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #111; display: flex; padding: 10px; gap: 10px; border-top: 1px solid #222; max-width: 500px; margin: 0 auto; }
+    .nav-btn { flex: 1; padding: 14px; border: none; border-radius: 10px; font-weight: 900; font-size: 15px; cursor: pointer; }
+    .nav-free { background: #00ff88; color: #000; }
+    .nav-vip { background: transparent; color: #888; border: 1px solid #333; }
   </style>
 </head>
 <body>
   <div class="container">
+    
     <button class="join-btn" onclick="joinVIP()">JOIN NOW - 150GH</button>
-    <h2 class="header-title">🏆 LIVE PROOF - RECENT WINS 🏆</h2>
-    <div id="proofsContainer"></div>
 
-    <div class="games-card" style="margin-top: 25px;">
-      <h2>🔥 TODAY'S GAMES 🔥</h2>
-      <div id="gamesContainer"></div>
+    <h2 class="header-title">🏆 LIVE PROOF - RECENT WINS 🏆</h2>
+
+    <!-- NEW WIN - 19 Aug -->
+    <div class="proof-card">
+      <div class="proof-top">
+        <span class="proof-date">19 Aug 2026</span>
+        <span class="won-badge">WON</span>
+      </div>
+      <div class="proof-code">Code: ACPGXE</div>
+      <div class="proof-info">SportyBet Instant Virtuals | Odds: 5.97</div>
+      <div class="proof-bottom">
+        <div>
+          <div class="proof-label">Stake</div>
+          <div class="proof-stake">GH₵ 100</div>
+        </div>
+        <div style="text-align: right;">
+          <div class="proof-label">Payout</div>
+          <div class="proof-payout">GH₵ 1,874.02</div>
+        </div>
+      </div>
     </div>
+
+    <!-- OLD WIN 1 -->
+    <div class="proof-card">
+      <div class="proof-top">
+        <span class="proof-date">16 Aug 2026</span>
+        <span class="won-badge">WON</span>
+      </div>
+      <div class="proof-code">Code: 8YDK3Y1</div>
+      <div class="proof-info">3 Games | Odds: 5.10</div>
+      <div class="proof-bottom">
+        <div>
+          <div class="proof-label">Stake</div>
+          <div class="proof-stake">GH₵ 50</div>
+        </div>
+        <div style="text-align: right;">
+          <div class="proof-label">Payout</div>
+          <div class="proof-payout">GH₵ 255.00</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OLD WIN 2 -->
+    <div class="proof-card">
+      <div class="proof-top">
+        <span class="proof-date">15 Aug 2026</span>
+        <span class="won-badge">WON</span>
+      </div>
+      <div class="proof-code">Code: VIP9K2X7</div>
+      <div class="proof-info">VIP 4 Games | Odds: 12.45</div>
+      <div class="proof-bottom">
+        <div>
+          <div class="proof-label">Stake</div>
+          <div class="proof-stake">GH₵ 100</div>
+        </div>
+        <div style="text-align: right;">
+          <div class="proof-label">Payout</div>
+          <div class="proof-payout">GH₵ 1,245.00</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OLD WIN 3 -->
+    <div class="proof-card">
+      <div class="proof-top">
+        <span class="proof-date">14 Aug 2026</span>
+        <span class="won-badge">WON</span>
+      </div>
+      <div class="proof-code">Code: 7PLM4R9</div>
+      <div class="proof-info">3 Games | Odds: 4.80</div>
+      <div class="proof-bottom">
+        <div>
+          <div class="proof-label">Stake</div>
+          <div class="proof-stake">GH₵ 50</div>
+        </div>
+        <div style="text-align: right;">
+          <div class="proof-label">Payout</div>
+          <div class="proof-payout">GH₵ 240.00</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TODAY'S GAMES -->
+    <div class="games-card">
+      <div class="games-title">🔥 TODAY'S GAMES 🔥</div>
+      
+      <div class="game">
+        <div class="game-teams">Celtic vs LASK Linz</div>
+        <div class="game-tip">
+          <span class="game-pick">Tip: Home Win</span>
+          <span class="game-odds">1.76</span>
+        </div>
+      </div>
+
+      <div class="game">
+        <div class="game-teams">Atletico Madrid vs Malaga CF</div>
+        <div class="game-tip">
+          <span class="game-pick">Tip: Home Win</span>
+          <span class="game-odds">1.38</span>
+        </div>
+      </div>
+
+      <div class="game">
+        <div class="game-teams">NEC Nijmegen vs Bodoe/Glimt</div>
+        <div class="game-tip">
+          <span class="game-pick">Tip: Away Win</span>
+          <span class="game-odds">2.46</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 
+  <!-- BOTTOM NAV -->
   <div class="bottom-nav">
     <button class="nav-btn nav-free">FREE PICKS</button>
     <button class="nav-btn nav-vip" onclick="joinVIP()">👑 VIP PICKS</button>
   </div>
 
   <script>
-    const proofs = JSON.parse(localStorage.getItem('tipsgh_proofs') || '[]');
-    const games = JSON.parse(localStorage.getItem('tipsgh_games') || '[]');
-
-    // Load Proofs
-    document.getElementById('proofsContainer').innerHTML = proofs.map(p => `
-      <div class="proof-card">
-        <div class="proof-top">
-          <span style="color: #aaa; font-size: 13px;">${p.date}</span>
-          <span class="won-badge">WON</span>
-        </div>
-        <div class="proof-code">Code: ${p.code}</div>
-        <div class="proof-info">${p.info}</div>
-        <div class="proof-bottom">
-          <div>
-            <div style="color: #aaa; font-size: 12px;">Stake</div>
-            <div class="proof-stake">GH₵ ${p.stake}</div>
-          </div>
-          <div style="text-align: right;">
-            <div style="color: #aaa; font-size: 12px;">Payout</div>
-            <div class="proof-payout">GH₵ ${p.payout}</div>
-          </div>
-        </div>
-      </div>
-    `).join('');
-
-    // Load Games
-    document.getElementById('gamesContainer').innerHTML = games.map(g => `
-      <div class="game">
-        <div style="font-size: 16px; font-weight: bold; margin-bottom: 5px;">${g.teams}</div>
-        <div style="display: flex; justify-content: space-between;">
-          <span style="color: #00ff88; font-weight: bold;">Tip: ${g.pick}</span>
-          <span style="background: #00ff88; color: #000; padding: 3px 10px; border-radius: 6px; font-weight: bold;">${g.odds}</span>
-        </div>
-        <div style="font-size: 12px; color: #8b949e; margin-top: 5px;">${g.league}</div>
-      </div>
-    `).join('');
-
     function joinVIP() {
       const msg = "Hi TIPS GH, I want to join VIP. Amount: 150GH";
       window.open(`https://wa.me/971507148631?text=${msg}`);
