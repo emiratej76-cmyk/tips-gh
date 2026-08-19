@@ -21,18 +21,24 @@
   .calc-result h4 { color: #888; font-size: 13px; }
   .calc-result h2 { color: #00FF88; font-size: 24px; margin-top: 5px; }
   
-  /* WINNING GAMES ONLY - GREEN */
-  .proof-wrap { background: #0a0a0a; border-radius: 12px; border: 2px solid #00FF88; margin-bottom: 15px; overflow: hidden; box-shadow: 0 0 15px #00ff8855; }
-  .proof-header { background: #00C853; padding: 12px; text-align: center; font-weight: 900; font-size: 16px; }
+  /* LIVE GAMES - RED STYLE */
+  .live-wrap { background: #0a0a0a; border-radius: 12px; border: 2px solid #ff0000; margin-bottom: 15px; overflow: hidden; box-shadow: 0 0 15px #ff000055; }
+  .live-header { background: #d00000; padding: 12px; text-align: center; font-weight: 900; font-size: 16px; display: flex; justify-content: space-between; align-items: center; }
+  .live-badge { background: #000; color: #ff0000; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 900; animation: blink 1s infinite; }
+  @keyframes blink { 50% { opacity: 0.5; } }
   .selections { background: #111; }
-  .selection-title { background: #1a3a1a; color: #00ff88; padding: 10px 15px; font-size: 13px; font-weight: bold; text-align: center; }
+  .selection-title { background: #3a1a1a; color: #ff8888; padding: 10px 15px; font-size: 13px; font-weight: bold; text-align: center; }
   .selection-item { padding: 14px 15px; border-bottom: 1px solid #222; }
   .selection-item:last-child { border-bottom: none; }
   .selection-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-  .selection-pick { font-weight: 900; color: #00FF88; font-size: 15px; display: flex; align-items: center; gap: 8px; }
-  .selection-odds { font-weight: 900; font-size: 18px; color: #00FF88; }
+  .selection-pick { font-weight: 900; color: #ff5555; font-size: 15px; display: flex; align-items: center; gap: 8px; }
+  .selection-odds { font-weight: 900; font-size: 18px; color: #ff5555; }
   .selection-teams { font-size: 15px; color: #fff; margin-bottom: 3px; font-weight: 700; }
   .selection-market { font-size: 12px; color: #888; font-weight: bold; }
+  
+  /* WINNING GAMES - GREEN STYLE */
+  .proof-wrap { background: #0a0a0a; border-radius: 12px; border: 2px solid #00FF88; margin-bottom: 15px; overflow: hidden; box-shadow: 0 0 15px #00ff8855; }
+  .proof-header { background: #00C853; padding: 12px; text-align: center; font-weight: 900; font-size: 16px; }
   
   /* VIP PLANS */
   .plan-card { background: #111; border-radius: 12px; padding: 20px; margin-bottom: 15px; border: 1px solid #222; }
@@ -93,58 +99,74 @@
     </div>
   </div>
 
-  <!-- 2. LIVE WINNING PROOF - ONLY GAMES -->
-  <div class="top-title">🏆 LIVE WINNING PROOF 🏆</div>
+  <!-- 2. TODAY'S LIVE GAMES - RED -->
+  <div class="top-title">⚡ TODAY'S LIVE GAMES ⚡</div>
   
-  <!-- PROOF 1 - ONLY GAMES -->
-  <div class="proof-wrap">
-    <div class="proof-header">WINNING SLIP - 19/08/2026</div>
+  <!-- NEW LIVE GAMES FROM YOUR SCREENSHOT -->
+  <div class="live-wrap">
+    <div class="live-header">
+      <span>VIP GAMES - 20/08/2026</span>
+      <span class="live-badge">LIVE</span>
+    </div>
     <div class="selections">
-      <div class="selection-title">3/3 GAMES WON ✅</div>
+      <div class="selection-title">5 GAMES ACCA @6.14</div>
+      
       <div class="selection-item">
         <div class="selection-top">
-          <span class="selection-pick">⚽ Home</span>
-          <span class="selection-odds">1.76</span>
+          <span class="selection-pick">⚽ Home (1:0)</span>
+          <span class="selection-odds">1.34</span>
         </div>
-        <div class="selection-teams">Celtic vs LASK Linz</div>
-        <div class="selection-market">1X2</div>
+        <div class="selection-teams">Avai FC SC vs SC Recife PE</div>
+        <div class="selection-market">Handicap 1:0</div>
       </div>
+
       <div class="selection-item">
         <div class="selection-top">
-          <span class="selection-pick">⚽ Home</span>
-          <span class="selection-odds">1.38</span>
+          <span class="selection-pick">⚽ Home (1:0)</span>
+          <span class="selection-odds">1.45</span>
         </div>
-        <div class="selection-teams">Atletico Madrid vs Malaga CF</div>
-        <div class="selection-market">1X2</div>
+        <div class="selection-teams">Racing Club Avellaneda vs CA Belgrano de Cordoba</div>
+        <div class="selection-market">Handicap 1:0</div>
       </div>
+
       <div class="selection-item">
         <div class="selection-top">
-          <span class="selection-pick">⚽ Away</span>
-          <span class="selection-odds">2.46</span>
+          <span class="selection-pick">⚽ Away (0:1)</span>
+          <span class="selection-odds">1.64</span>
         </div>
-        <div class="selection-teams">NEC Nijmegen vs Bodoe/Glimt</div>
-        <div class="selection-market">1X2</div>
+        <div class="selection-teams">Philadelphia Union vs Inter Miami CF</div>
+        <div class="selection-market">Handicap 0:1</div>
+      </div>
+
+      <div class="selection-item">
+        <div class="selection-top">
+          <span class="selection-pick">⚽ Home (1:0)</span>
+          <span class="selection-odds">1.22</span>
+        </div>
+        <div class="selection-teams">Columbus Crew vs CF Montreal</div>
+        <div class="selection-market">Handicap 1:0</div>
+      </div>
+
+      <div class="selection-item">
+        <div class="selection-top">
+          <span class="selection-pick">⚽ Home (1:0)</span>
+          <span class="selection-odds">1.58</span>
+        </div>
+        <div class="selection-teams">New York Red Bulls vs Nashville SC</div>
+        <div class="selection-market">Handicap 1:0</div>
       </div>
     </div>
   </div>
 
-  <!-- PROOF 2 - ONLY GAMES -->
+  <!-- OLD WINNING PROOF - GOLD -->
+  <div class="top-title">🏆 RECENT WINNING PROOF 🏆</div>
   <div class="proof-wrap">
-    <div class="proof-header">WINNING SLIP - 16/08/2026</div>
+    <div class="proof-header">WINNING SLIP - 19/08/2026</div>
     <div class="selections">
-      <div class="selection-title">3/3 GAMES WON ✅</div>
-      <div class="selection-item">
-        <div class="selection-top"><span class="selection-pick">⚽ Home</span><span class="selection-odds">1.85</span></div>
-        <div class="selection-teams">Arsenal vs Chelsea</div><div class="selection-market">1X2</div>
-      </div>
-      <div class="selection-item">
-        <div class="selection-top"><span class="selection-pick">⚽ Over 2.5</span><span class="selection-odds">1.60</span></div>
-        <div class="selection-teams">Real Madrid vs Barca</div><div class="selection-market">Goals</div>
-      </div>
-      <div class="selection-item">
-        <div class="selection-top"><span class="selection-pick">⚽ Away</span><span class="selection-odds">1.72</span></div>
-        <div class="selection-teams">Man City vs Liverpool</div><div class="selection-market">1X2</div>
-      </div>
+      <div class="selection-title" style="background:#1a3a1a; color:#00ff88;">3/3 GAMES WON ✅</div>
+      <div class="selection-item"><div class="selection-top"><span style="color:#00FF88;">⚽ Home</span><span style="color:#00FF88;">1.76</span></div><div class="selection-teams">Celtic vs LASK Linz</div><div class="selection-market">1X2</div></div>
+      <div class="selection-item"><div class="selection-top"><span style="color:#00FF88;">⚽ Home</span><span style="color:#00FF88;">1.38</span></div><div class="selection-teams">Atletico Madrid vs Malaga CF</div><div class="selection-market">1X2</div></div>
+      <div class="selection-item"><div class="selection-top"><span style="color:#00FF88;">⚽ Away</span><span style="color:#00FF88;">2.46</span></div><div class="selection-teams">NEC Nijmegen vs Bodoe/Glimt</div><div class="selection-market">1X2</div></div>
     </div>
   </div>
 
@@ -163,15 +185,6 @@
     <a href="https://wa.me/971507148631?text=Hi%20I%20want%20VIP%20PRO%20150GH" class="join-btn">JOIN NOW - 150GH</a>
   </div>
 
-  <!-- 4. FREE/VIP GAMES -->
-  <div class="tabs">
-    <div id="tab-free" class="tab active-free" onclick="showTab('free')">FREE PICKS</div>
-    <div id="tab-vip" class="tab" onclick="showTab('vip')">👑 VIP PICKS</div>
-  </div>
-
-  <div id="content-free"><div class="game-card"><div class="live-tag">LIVE</div><div></div></div></div>
-  <div id="content-vip" class="hidden"><div class="game-card"><div class="live-tag">VIP</div><div>Man City vs Arsenal - Over 2.5 @1.85</div></div></div>
-
   <a href="https://wa.me/971507148631?text=Hi%20Boss" class="whatsapp-btn">📲 WHATSAPP SUPPORT</a>
 </div>
 
@@ -185,21 +198,6 @@ function calc(){
   document.getElementById('result').innerText = 'GH₵ ' + estReturn.toFixed(2);
 }
 calc();
-
-const VIP_PASSWORD = "VIP2026";
-let vipUnlocked = false;
-function showTab(tab) {
-  if(tab === 'vip' && !vipUnlocked) {
-    let pass = prompt("Enter VIP Password:");
-    if(pass === VIP_PASSWORD) vipUnlocked = true; else return;
-  }
-  document.getElementById("content-free").classList.add("hidden");
-  document.getElementById("content-vip").classList.add("hidden");
-  document.getElementById("tab-free").className = "tab";
-  document.getElementById("tab-vip").className = "tab";
-  document.getElementById("content-" + tab).classList.remove("hidden");
-  document.getElementById("tab-" + tab).className = "tab active-" + tab;
-}
 </script>
 </body>
 </html>
